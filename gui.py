@@ -64,7 +64,7 @@ def show_3():
     b1.grid(row=10, column=0)
     b2.grid(row=10, column=2)
 
-b1 = tk.Button(root, text="Random Queue", command=show_2).pack()
-b2 = tk.Button(root, text="Create Own", command=show_3).pack()
-b3 = tk.Button(root, text="Bitch I wanna quit", command=root.quit).pack()
+b1 = tk.Button(root, bg="red", text="Random Queue", command=show_2).pack()
+b2 = tk.Button(root, bg="blue", text="Create Own", command=show_3).pack()
+b3 = tk.Button(root, bg="green", text="Bitch I wanna quit", command=root.quit).pack()
 root.mainloop()
