@@ -1,7 +1,13 @@
 def sample_function(process):
 	#algorithm here
-	execution_order = [process[0][2],process[1][2]]
-	return execution_order
+	result = []
+	response_time = 0
+	burst_time = 0
+	turnaround_time = 0
+	throughput = 0
+	cpu_utilisation = 0
+	result.append(response_time,burst_time,turnaround_time,throughput,cpu_utilisation)
+	return result
 
 process = []
 process.append([1,5,0])
