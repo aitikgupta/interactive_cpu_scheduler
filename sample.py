@@ -13,7 +13,7 @@ def sample_function(process):
 	result.append(cpu_utilisation)
 	return result
 
-process = []
-process.append((1,5,0))
-process.append((2,4,0))
-print(sample_function(process))
+# process = []
+# process.append((1,5,0))
+# process.append((2,4,0))
+# print(sample_function(process))
