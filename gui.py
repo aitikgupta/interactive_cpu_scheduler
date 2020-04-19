@@ -71,9 +71,17 @@ def show_3():
     e1.grid(row=1, column=0, padx=5, pady=2)
     e2.grid(row=1, column=1, padx=5, pady=2)
     e3.grid(row=1, column=2, padx=5, pady=2)
+    global row
+    row = 30
     queue = []
+    def give_row():
+        global row
+        row += 1
+        return row
     def add_process():
-        queue.append((int(e1.get()), int(e2.get()), int(e3.get())))
+        user_process = (int(e1.get()), int(e2.get()), int(e3.get()))
+        values = tk.Label(second, text = str(user_process)).grid(row=give_row(), column=1)
+        queue.append(user_process)
         e1.delete(0, tk.END)
         e2.delete(0, tk.END)
         e3.delete(0, tk.END)
