@@ -6,4 +6,3 @@ Output Parameters:
 	2. Average Burst Time
 	3. Average TurnAround Time
 	4. Throughput
-	5. CPU Utilization
