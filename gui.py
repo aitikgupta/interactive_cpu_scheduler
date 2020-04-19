@@ -1,7 +1,7 @@
 import tkinter as tk
 root = tk.Tk()
 root.title("Os LAB")
-size = "500x500"
+size = "400x200"
 root.geometry(size)
 
 
