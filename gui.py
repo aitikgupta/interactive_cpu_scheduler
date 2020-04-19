@@ -49,10 +49,10 @@ def goto_random_queue():
                 arr_time = random.randint(0,20)
                 queue.append((pid,bust_time,arr_time))
             return queue
-        random_queue = generate_random_queue(length = 6)
-        v = tk.Label(second, text=f"Your Queue is: {random_queue}").grid(row=0, column=1)
-        b1 = tk.Button(second, text="Go to Main", command=lambda:goto_main(second)).grid(row=1, column=0)
-        b2 = tk.Button(second, text="Submit", command=lambda:goto_submission(second, random_queue)).grid(row=1, column=2)
+    random_queue = generate_random_queue(length = 6)
+    v = tk.Label(second, text=f"Your Queue is: {random_queue}").grid(row=0, column=1)
+    b1 = tk.Button(second, text="Go to Main", command=lambda:goto_main(second)).grid(row=1, column=0)
+    b2 = tk.Button(second, text="Submit", command=lambda:goto_submission(second, random_queue)).grid(row=1, column=2)
 
 
 def goto_main(second):
