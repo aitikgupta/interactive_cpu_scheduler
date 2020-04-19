@@ -3,8 +3,8 @@ import random
 from sample import sample_function
 from tkinter import messagebox
 root = tk.Tk()
-root.title("Os LAB")
-size = "800x800"
+root.title("Interactive CPU Scheduler")
+size = "1000x300"
 root.geometry(size)
 
 def algo(window, algorithm, queue):
@@ -44,9 +44,9 @@ def goto_random_queue():
         queue = []
         for i in range(length):
             pid = random.randint(0,10)
-            bust = random.randint(0,20)
-            arrival = random.randint(0,20)
-            queue.append((pid,bust,arrival))
+            bust_time = random.randint(0,20)
+            arr_time = random.randint(0,20)
+            queue.append((pid,bust_time,arr_time))
         return queue
     random_queue = generate_random_queue(length = 6)
     v = tk.Label(second, text=f"Your Queue is: {random_queue}").grid(row=0, column=1)
