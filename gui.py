@@ -80,12 +80,22 @@ def goto_user_queue():
         row += 1
         return row
     def add_process():
-        user_process = (int(e1.get()), int(e2.get()), int(e3.get()))
+        try:
+            pid = int(e1.get())
+            bust_time = int(e2.get())
+            arr_time = int(e3.get())
+        except:
+            messagebox.showerror("Invalid Input!", "One or more than one inputs aren't integers. Retry.")
+            return
+        user_process = (pid, bust_time, arr_time)
         for pr in queue:
             if user_process[0] == pr[0]:
                 messagebox.showerror("Process IDs should be unique!", "You entered a Process ID which isn't unique.")
                 e1.delete(0, tk.END)
                 return
+        if len(queue) > 6:
+            messagebox.showwarning("Max Inputs Reached!", "User can input maximum of 7 processes.")
+            return
         values = tk.Label(second, text = str(user_process)).grid(row=give_row(), column=1)
         queue.append(user_process)
         e1.delete(0, tk.END)
