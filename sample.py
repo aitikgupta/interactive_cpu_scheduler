@@ -6,10 +6,14 @@ def sample_function(process):
 	turnaround_time = 0
 	throughput = 0
 	cpu_utilisation = 0
-	result.append(response_time,burst_time,turnaround_time,throughput,cpu_utilisation)
+	result.append(response_time)
+	result.append(burst_time)
+	result.append(turnaround_time)
+	result.append(throughput)
+	result.append(cpu_utilisation)
 	return result
 
 process = []
-process.append([1,5,0])
-process.append([2,4,0])
-sample_function(process)
+process.append((1,5,0))
+process.append((2,4,0))
+print(sample_function(process))
