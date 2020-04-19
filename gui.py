@@ -36,17 +36,12 @@ def goto_submission(second, queue):
     b2 = tk.Button(third, text="Show Output", command=lambda:algo(third, op.get(), queue)).grid(row=5, column=2)
 
 
-def goto_random_queue():        
-    second = tk.Toplevel()
-    root.withdraw()
-    second.geometry(size)
-    def generate_random_queue(length):
+def generate_random_queue(length):
         queue = []
+        choices = list(range(0,10))
+        random.shuffle(choices)
         for i in range(length):
-            pid = random.randint(0,50)
-            for pr in queue:
-                if pid == pr[0]:
-                    pid = random.randint(0, 100)
+            pid = choices.pop()
             bust_time = random.randint(0,20)
             arr_time = random.randint(0,20)
             queue.append((pid,bust_time,arr_time))
