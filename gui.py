@@ -35,21 +35,24 @@ def goto_submission(second, queue):
     b1 = tk.Button(third, text="Go to Main", command=lambda:goto_main(third)).grid(row=5, column=0)
     b2 = tk.Button(third, text="Show Output", command=lambda:algo(third, op.get(), queue)).grid(row=5, column=2)
 
-
-def generate_random_queue(length):
-        queue = []
-        choices = list(range(0,10))
-        random.shuffle(choices)
-        for i in range(length):
-            pid = choices.pop()
-            bust_time = random.randint(0,20)
-            arr_time = random.randint(0,20)
-            queue.append((pid,bust_time,arr_time))
-        return queue
-    random_queue = generate_random_queue(length = 6)
-    v = tk.Label(second, text=f"Your Queue is: {random_queue}").grid(row=0, column=1)
-    b1 = tk.Button(second, text="Go to Main", command=lambda:goto_main(second)).grid(row=1, column=0)
-    b2 = tk.Button(second, text="Submit", command=lambda:goto_submission(second, random_queue)).grid(row=1, column=2)
+def goto_random_queue():        
+    second = tk.Toplevel()
+    root.withdraw()
+    second.geometry(size)
+    def generate_random_queue(length):
+            queue = []
+            choices = list(range(0,10))
+            random.shuffle(choices)
+            for i in range(length):
+                pid = choices.pop()
+                bust_time = random.randint(0,20)
+                arr_time = random.randint(0,20)
+                queue.append((pid,bust_time,arr_time))
+            return queue
+        random_queue = generate_random_queue(length = 6)
+        v = tk.Label(second, text=f"Your Queue is: {random_queue}").grid(row=0, column=1)
+        b1 = tk.Button(second, text="Go to Main", command=lambda:goto_main(second)).grid(row=1, column=0)
+        b2 = tk.Button(second, text="Submit", command=lambda:goto_submission(second, random_queue)).grid(row=1, column=2)
 
 
 def goto_main(second):
