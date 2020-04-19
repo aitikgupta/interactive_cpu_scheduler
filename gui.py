@@ -30,10 +30,10 @@ def goto_submission(second, queue):
     op.set("Default Algo")
     option = tk.OptionMenu(third, op, *modes)
     option.grid(row=0, column=1)
-    b = tk.Button(third, text="Show Selection", command=pr).grid(row=5, column=1)
+    b = tk.Button(third, text="Show Algorithm", command=pr).grid(row=5, column=1)
     lab.grid(row=8, column=1)
     b1 = tk.Button(third, text="Go to Main", command=lambda:goto_main(third)).grid(row=5, column=0)
-    b2 = tk.Button(third, text="Output dede", command=lambda:algo(third, op.get(), queue)).grid(row=5, column=2)
+    b2 = tk.Button(third, text="Show Output", command=lambda:algo(third, op.get(), queue)).grid(row=5, column=2)
 
 
 def goto_random_queue():        
@@ -43,7 +43,10 @@ def goto_random_queue():
     def generate_random_queue(length):
         queue = []
         for i in range(length):
-            pid = random.randint(0,10)
+            pid = random.randint(0,50)
+            for pr in queue:
+                if pid == pr[0]:
+                    pid = random.randint(0, 100)
             bust_time = random.randint(0,20)
             arr_time = random.randint(0,20)
             queue.append((pid,bust_time,arr_time))
