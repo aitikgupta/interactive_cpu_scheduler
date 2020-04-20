@@ -3,6 +3,6 @@ This is a GUI application which provides a dynamic and interactive interface to 
 
 ### Output Parameters:
 1.   Average Waiting Time
-2.   Average Burst Time
+2.   Average Response Time
 3.   Average TurnAround Time
 4.   Throughput
