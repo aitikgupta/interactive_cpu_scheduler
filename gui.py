@@ -45,9 +45,9 @@ def goto_random_queue():
             random.shuffle(choices)
             for i in range(length):
                 pid = choices.pop()
-                bust_time = random.randint(0,20)
+                burst_time = random.randint(0,20)
                 arr_time = random.randint(0,20)
-                queue.append((pid,bust_time,arr_time))
+                queue.append((pid,burst_time,arr_time))
             return queue
     random_queue = generate_random_queue(length = 6)
     v = tk.Label(second, text=f"Your Queue is: {random_queue}").grid(row=0, column=1)
@@ -68,7 +68,7 @@ def goto_user_queue():
     e2 = tk.Entry(second)
     e3 = tk.Entry(second)
     lab1 = tk.Label(second, text="Process ID:").grid(row=0, column=0)
-    lab2 = tk.Label(second, text="Bust Time:").grid(row=0, column=1)
+    lab2 = tk.Label(second, text="burst Time:").grid(row=0, column=1)
     lab3 = tk.Label(second, text="Arrival Time:").grid(row=0, column=2)
     e1.grid(row=1, column=0, padx=5, pady=2)
     e2.grid(row=1, column=1, padx=5, pady=2)
@@ -83,12 +83,12 @@ def goto_user_queue():
     def add_process():
         try:
             pid = int(e1.get())
-            bust_time = int(e2.get())
+            burst_time = int(e2.get())
             arr_time = int(e3.get())
         except:
             messagebox.showerror("Invalid Input!", "One or more than one inputs aren't integers. Retry.")
             return
-        user_process = (pid, bust_time, arr_time)
+        user_process = (pid, burst_time, arr_time)
         for pr in queue:
             if user_process[0] == pr[0]:
                 messagebox.showerror("Process IDs should be unique!", "You entered a Process ID which isn't unique.")
