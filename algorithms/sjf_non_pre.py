@@ -30,11 +30,11 @@ def sjf_non_pre(process):
 		if (wt[short] < 0): 
 			wt[short] = 0
 		time += burst[short]
-	print(order)
-	print(wt)
+	# print(order)
+	# print(wt)
 	for i in range(n): 
 		tat[i] = process[i][1] + wt[i]
-	print(tat)
+	# print(tat)
 
 	for i in range(n):
 		total_wt += wt[i] 
