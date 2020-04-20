@@ -1,17 +1,28 @@
 import tkinter as tk
 import random
-from sample import sample_function
+from algorithms.fcfs import fcfs
+from algorithms.sjf_non_pre import sjf_non_pre
+from algorithms.sjf_pre import sjf_pre
 from tkinter import messagebox
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
-size = "1000x300"
+size = "1150x500"
 root. configure(bg="grey")
 root.geometry(size)
 
 def algo(window, algorithm, queue):
-    output = sample_function(queue)
-    out = f"Input Queue: {queue}\n\n\nOutput: {output}"
-    label = tk.Label(window, text=out).grid(row=20, column=1)
+    if algorithm == "fcfs":
+        output = fcfs(queue)
+    elif algorithm == "sjf_non_pre":
+        output = sjf_non_pre(queue)
+    elif algorithm == "sjf_pre":
+        output = sjf_pre(queue)
+    wait_time = output[0]
+    response_time = output[1]
+    turnaround_time = output[2]
+    throughput = output[3]
+    out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+    label = tk.Label(window, text=out, justify="left").grid(row=20, column=1)
 
 def goto_submission(second, queue):
     def pr():
@@ -23,9 +34,9 @@ def goto_submission(second, queue):
     lab = tk.Label(third)
     modes = [
         ("Default Algo"),
-        ("1st Algo"),
-        ("2nd Algo"),
-        ("3rd Algo"),
+        ("fcfs"),
+        ("sjf_non_pre"),
+        ("sjf_pre"),
         ("4th Algo"),
     ]
     op = tk.StringVar()
