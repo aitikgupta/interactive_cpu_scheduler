@@ -12,8 +12,9 @@ def sjf_non_pre(process):
 	time = 0
 	short = -1
 	check = False
+	count = 0
 
-	for p in range(n+1): 
+	while count!=n: 
 		minm = 10000
 		for j in range(n): 
 			if ((process[j][2] <= time) and (burst[j] < minm) and (burst[j] > 0) and (complete[j] == False)): 
@@ -25,6 +26,7 @@ def sjf_non_pre(process):
 			continue
 		order.append(short)
 		complete[short] = True
+		count += 1
 		check = False
 		wt[short] = (time - process[short][2]) 
 		if (wt[short] < 0): 
