@@ -14,6 +14,9 @@ def fcfs(process):
 	for i in range(1, n):
 		time += process[i-1][2]
 		wt[i] = time - process[i][0]
+		if(wt[i] < 0):
+			wt[i] = 0
+			time = process[i][1]
 	time += process[-1][2]
 
 	for i in range(n): 
