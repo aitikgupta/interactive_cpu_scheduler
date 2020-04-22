@@ -1,8 +1,10 @@
-def priority_non_pre(process):
+def priority_non_pre(processes, priorities):
 	queue = []
-	for pid,burst,arrival,priority in process:
-		queue.append([priority,arrival,pid,burst])
-	process = sorted(queue, key=lambda x: (x[0], -x[1]))
+	for pid,burst,arrival in processes:
+		queue.append([arrival,pid,burst])
+	for i in range(len(priorities)):
+		queue[i].append(int(priorities[i]))
+	process = sorted(queue, key=lambda x: (x[3]))
 	n = len(process)
 	wt = [0] * n 
 	tat = [0] * n 
@@ -11,6 +13,7 @@ def priority_non_pre(process):
 	time = 0
 	time += process[0][0]
 	wt[0] = 0
+
 	for i in range(1, n):
 		time += process[i-1][2]
 		wt[i] = time - process[i][0]
