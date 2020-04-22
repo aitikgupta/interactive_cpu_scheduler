@@ -23,10 +23,10 @@ def algo(window, algorithm, queue, extra):
     elif algorithm == "round_robin":
         value = extra.get()
         output = round_robin(queue, value)
-    elif algorithm == "priority_queue":
+    elif algorithm == "non_pre_priority_queue":
         values = [idx.get() for idx in extra]
         output = priority_non_pre(queue, values)
-    elif algorithm == "priority_queue_pre":
+    elif algorithm == "pre_priority_queue":
         values = [idx.get() for idx in extra]
         output = priority_queue_pre(queue, values)
     elif algorithm == "multi_level_queue":
@@ -107,7 +107,7 @@ def goto_submission(second, queue):
         if algorithm == "round_robin":
             sl.grid(row=20, column=1)
             extra = sl
-        elif algorithm == "priority_queue_non_pre" or algorithm =="priority_queue_pre":
+        elif algorithm == "non_pre_priority_queue" or algorithm =="pre_priority_queue":
             pr_title.grid(row=19, column=0)
             pris_title.grid(row=19, column=2)
             for i in range(len(pr)):
@@ -131,8 +131,8 @@ def goto_submission(second, queue):
         ("sjf_non_pre"),
         ("sjf_pre"),
         ("round_robin"),
-        ("priority_queue_non_pre"),
-        ("priority_queue_pre"),
+        ("non_pre_priority_queue"),
+        ("pre_priority_queue"),
         ("multi_level_queue")
     ]
     op = tk.StringVar()
