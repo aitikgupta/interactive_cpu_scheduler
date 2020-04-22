@@ -5,9 +5,6 @@ def priority_queue_pre(processes, priorities):
 	for i in range(len(priorities)):
 		queue[i].append(int(priorities[i]))
 	process = sorted(queue, key=lambda x: (x[2], x[3]))
-	print(processes)
-	print(queue)
-	print(process)
 	n = len(process)
 	wt = [0] * n
 	rt = [0] * n

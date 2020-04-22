@@ -6,6 +6,7 @@ from algorithms.sjf_non_pre import sjf_non_pre
 from algorithms.sjf_pre import sjf_pre
 from algorithms.round_robin import round_robin
 from algorithms.priority_non_pre import priority_non_pre
+from algorithms.priority_queue_pre import priority_queue_pre
 from tkinter import messagebox
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
@@ -25,6 +26,9 @@ def algo(window, algorithm, queue, extra):
     elif algorithm == "priority_queue":
         values = [idx.get() for idx in extra]
         output = priority_non_pre(queue, values)
+    elif algorithm == "priority_queue_pre":
+        values = [idx.get() for idx in extra]
+        output = priority_queue_pre(queue, values)
     elif algorithm == "multi_level_queue":
         multi_level_algorithms = [algori.get() for algori in extra[0]]
         multi_level_processes = [prid.get().split(",") for prid in extra[1]]
@@ -110,6 +114,13 @@ def goto_submission(second, queue):
                 pr_idx[i].grid(row=20+i, column=0)
                 pr_pris[i].grid(row=20+i, column=2)
             extra = pr_pris
+        elif algorithm == "priority_queue_pre":
+            pr_title.grid(row=19, column=0)
+            pris_title.grid(row=19, column=2)
+            for i in range(len(pr)):
+                pr_idx[i].grid(row=20+i, column=0)
+                pr_pris[i].grid(row=20+i, column=2)
+            extra = pr_pris
         elif algorithm == "multi_level_queue":
             for level in range(3):
                     multi_level_algo_labels[level].grid(row=20+level, column=0)
@@ -127,6 +138,7 @@ def goto_submission(second, queue):
         ("sjf_pre"),
         ("round_robin"),
         ("priority_queue"),
+        ("priority_queue_pre"),
         ("multi_level_queue")
     ]
     op = tk.StringVar()
