@@ -122,7 +122,7 @@ def goto_submission(second, queue):
             for level in range(3):
                     multi_level_algo_labels[level].grid(row=20+level, column=0)
                     multi_level_algo_menus[level].grid(row=20+level, column=2)
-                    multi_level_algo_menus[level].config(height=1, width=30)
+                    multi_level_algo_menus[level].config(height=1, width=40)
                     multi_level_pr_labels[level].grid(row=23+level, column=0)
                     multi_level_processes[level].grid(row=23+level, column=2)
             extra = [multi_level_algorithms, multi_level_processes]
