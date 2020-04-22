@@ -154,7 +154,7 @@ def goto_random_queue():
             random.shuffle(choices)
             for i in range(length):
                 pid = choices.pop()
-                burst_time = random.randint(0, 20)
+                burst_time = random.randint(1, 20)
                 arr_time = random.randint(0, 20)
                 m1 = tk.Label(second, text=pid, font=("Times New Roman", 18, "normal"))
                 m2 = tk.Label(second, text=burst_time, font=("Times New Roman", 18, "normal"))
