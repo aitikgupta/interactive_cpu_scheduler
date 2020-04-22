@@ -107,17 +107,11 @@ def goto_submission(second, queue):
         if algorithm == "round_robin":
             sl.grid(row=20, column=1)
             extra = sl
-        elif algorithm == "priority_queue":
+        elif algorithm == "priority_queue_non_pre" or algorithm =="priority_queue_pre":
             pr_title.grid(row=19, column=0)
             pris_title.grid(row=19, column=2)
             for i in range(len(pr)):
-                pr_idx[i].grid(row=20+i, column=0)
-                pr_pris[i].grid(row=20+i, column=2)
-            extra = pr_pris
-        elif algorithm == "priority_queue_pre":
-            pr_title.grid(row=19, column=0)
-            pris_title.grid(row=19, column=2)
-            for i in range(len(pr)):
+                pr_pris[i].delete(0, tk.END)
                 pr_idx[i].grid(row=20+i, column=0)
                 pr_pris[i].grid(row=20+i, column=2)
             extra = pr_pris
@@ -137,7 +131,7 @@ def goto_submission(second, queue):
         ("sjf_non_pre"),
         ("sjf_pre"),
         ("round_robin"),
-        ("priority_queue"),
+        ("priority_queue_non_pre"),
         ("priority_queue_pre"),
         ("multi_level_queue")
     ]
