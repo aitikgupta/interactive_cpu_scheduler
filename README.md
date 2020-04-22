@@ -3,12 +3,14 @@ This is a GUI application which provides a dynamic and interactive interface to 
 
 ### CPU Scheduling Algorithms included:
 1.   First Come First Serve (FCFS)
-2.   Shortest Job First (SJF) with/without preemption
-3.	 Priority Based with/without preemption
-4.	 Round Robin with a range of time quantum available
-5.	 Multi-Level Queue with custom levels
-6.	 Multi-Level Feedback Queue with custom levels
-7.   *Also a default algorithm is provided.* 
+2.   Shortest Job First (SJF)
+3.   Shortest Time Remaining First (SRTF) (Pre-emptive SJF)
+4.	 Priority Queue (Non Pre-emptive)
+5.	 Priority Queue (Pre-emptive)
+6.	 Round Robin with a range of time quantum available
+7.	 Multi-Level Queue with custom levels
+8.	 Multi-Level Feedback Queue with custom levels
+9.   *Also a default algorithm is provided.* 
 
 ### Output Parameters:
 1.   Average Waiting Time
