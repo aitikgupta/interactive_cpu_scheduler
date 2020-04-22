@@ -14,27 +14,27 @@ size = "1150x500"
 root.geometry(size)
 
 def algo(window, algorithm, queue, extra):
-    if algorithm == "fcfs":
+    if algorithm == "First Come First Serve":
         output = fcfs(queue)
-    elif algorithm == "sjf_non_pre":
+    elif algorithm == "Shortest Job First Non Preemption":
         output = sjf_non_pre(queue)
-    elif algorithm == "sjf_pre":
+    elif algorithm == "Shortest Remaining Time First":
         output = sjf_pre(queue)
-    elif algorithm == "round_robin":
+    elif algorithm == "Round Robin":
         value = extra.get()
         output = round_robin(queue, value)
-    elif algorithm == "non_pre_priority_queue":
+    elif algorithm == "Non Preemption Priority Queue":
         values = [idx.get() for idx in extra]
         output = priority_non_pre(queue, values)
-    elif algorithm == "pre_priority_queue":
+    elif algorithm == "Preemption Priority Queue":
         values = [idx.get() for idx in extra]
         output = priority_queue_pre(queue, values)
-    elif algorithm == "multi_level_queue":
+    elif algorithm == "Multi Level Queue":
         multi_level_algorithms = [algori.get() for algori in extra[0]]
         multi_level_processes = [prid.get().split(",") for prid in extra[1]]
         # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{multi_level_processes}")
         output = sample_function(multi_level_algorithms, multi_level_processes)
-    elif algorithm == "default_algorithm":
+    elif algorithm == "Default Algorithm":
         output = sample_function(queue)
     else:
         messagebox.showerror("Select Algorithm First!", "Click on Select Algorithm button before submitting!")
@@ -67,11 +67,11 @@ def goto_submission(second, queue):
         pr_pris[i] = tk.Entry(third)
 
     multi_algos = [
-        ("fcfs"),
-        ("round_robin with time quantum: 2"),
-        ("round_robin with time quantum: 4"),
-        ("round_robin with time quantum: 8"),
-        ("round_robin with time quantum: 16"),
+        ("First Come First Serve"),
+        ("Round Robin with Time Quantum: 2"),
+        ("Round Robin with Time Quantum: 4"),
+        ("Round Robin with Time Quantum: 8"),
+        ("Round Robin with Time Quantum: 16"),
     ]
 
     multi_level_algo_labels = []
@@ -83,7 +83,7 @@ def goto_submission(second, queue):
         multi_level_algo_labels.append(tk.Label(third, text=f"Level {level+1} Algorithm:"))  
         multi_level_pr_labels.append(tk.Label(third, text=f"Process IDs for {level+1} Level [Separated by ',']: "))
         multi_level_algorithms.append(tk.StringVar())
-        multi_level_algorithms[level].set("fcfs")
+        multi_level_algorithms[level].set("First Come First Serve")
         multi_level_algo_menus.append(tk.OptionMenu(third, multi_level_algorithms[level], *multi_algos))
         multi_level_processes.append(tk.Entry(third))
 
@@ -106,11 +106,11 @@ def goto_submission(second, queue):
                     multi_level_pr_labels[level].grid_forget()
                     multi_level_processes[level].grid_forget()
         clear()
-        if algorithm == "round_robin":
+        if algorithm == "Round Robin":
             sl.grid(row=20, column=1)
             extra = sl
             time_quantum.grid(row=21, column=1)
-        elif algorithm == "non_pre_priority_queue" or algorithm =="pre_priority_queue":
+        elif algorithm == "Non Preemption Priority Queue" or algorithm == "Preemption Priority Queue":
             pr_title.grid(row=19, column=0)
             pris_title.grid(row=19, column=2)
             for i in range(len(pr)):
@@ -118,7 +118,7 @@ def goto_submission(second, queue):
                 pr_idx[i].grid(row=20+i, column=0)
                 pr_pris[i].grid(row=20+i, column=2)
             extra = pr_pris
-        elif algorithm == "multi_level_queue":
+        elif algorithm == "Multi Level Queue":
             for level in range(3):
                     multi_level_algo_labels[level].grid(row=20+level, column=0)
                     multi_level_algo_menus[level].grid(row=20+level, column=2)
@@ -129,26 +129,26 @@ def goto_submission(second, queue):
         submit = algorithm
     lab = tk.Label(third)
     modes = [
-        ("default_algorithm"),
-        ("fcfs"),
-        ("sjf_non_pre"),
-        ("sjf_pre"),
-        ("round_robin"),
-        ("non_pre_priority_queue"),
-        ("pre_priority_queue"),
-        ("multi_level_queue")
+        ("Default Algorithm"),
+        ("First Come First Serve"),
+        ("Shortest Job First Non Preemption"),
+        ("Shortest Remaining Time First"),
+        ("Round Robin"),
+        ("Non Preemption Priority Queue"),
+        ("Preemption Priority Queue"),
+        ("Multi Level Queue")
     ]
     op = tk.StringVar()
-    op.set("default_algorithm")
+    op.set("Default Algorithm")
     option = tk.OptionMenu(third, op, *modes)
-    b = tk.Button(third, text="Select Algorithm", height=2, width=20, command=lambda: select_algo(op.get()))    
-    b1 = tk.Button(third, text="Go to Main", height=2, width=20, command=lambda:goto_main(third))
-    b2 = tk.Button(third, text="Submit for Processing", height=2, width=20, command=lambda:algo(third, submit, queue, extra))
-    option.config(height=1, width=20)
-    option.grid(row=0, column=1, padx=120, pady=40)
-    b.grid(row=1, column=1, padx=100, pady=30, sticky=tk.NSEW)
-    b1.grid(row=1, column=0, padx=100, pady=30, sticky=tk.NSEW)
-    b2.grid(row=1, column=2, padx=120, pady=30, sticky=tk.NSEW)
+    b = tk.Button(third, text="Select Algorithm", height=2, width=30, command=lambda: select_algo(op.get()))
+    b1 = tk.Button(third, text="Go to Main", height=2, width=30, command=lambda:goto_main(third))
+    b2 = tk.Button(third, text="Submit for Processing", height=2, width=30, command=lambda:algo(third, submit, queue, extra))
+    option.config(height=1, width=30)
+    option.grid(row=0, column=1, padx=60, pady=40)
+    b.grid(row=1, column=1, padx=60, pady=30, sticky=tk.NSEW)
+    b1.grid(row=1, column=0, padx=70, pady=30, sticky=tk.NSEW)
+    b2.grid(row=1, column=2, padx=70, pady=30, sticky=tk.NSEW)
     lab.grid(row=2, column=1)
 
 def goto_random_queue():
