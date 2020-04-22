@@ -25,8 +25,16 @@ def algo(window, algorithm, queue, extra):
     elif algorithm == "priority_queue":
         values = [idx.get() for idx in extra]
         output = priority_non_pre(queue, values)
-    else:
+    elif algorithm == "multi_level_queue":
+        multi_level_algorithms = [algori.get() for algori in extra[0]]
+        multi_level_processes = [prid.get().split(",") for prid in extra[1]]
+        # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{multi_level_processes}")
+        output = sample_function(multi_level_algorithms, multi_level_processes)
+    elif algorithm == "default_algorithm":
         output = sample_function(queue)
+    else:
+        messagebox.showerror("Select Algorithm First!", "Click on Select Algorithm button before submitting!")
+        return
     wait_time = output[0]
     response_time = output[1]
     turnaround_time = output[2]
@@ -38,6 +46,8 @@ def algo(window, algorithm, queue, extra):
 def goto_submission(second, queue):
     global submit
     global extra
+    submit = None
+    extra = None
     third = tk.Toplevel()
     second.withdraw()
     third.geometry(size)
@@ -51,47 +61,76 @@ def goto_submission(second, queue):
         pr_idx[i] = tk.Label(third, text=pr[i])
         pr_pris[i] = tk.Entry(third)
 
+    multi_algos = [
+        ("fcfs"),
+        ("round_robin with time quantum: 2"),
+        ("round_robin with time quantum: 4"),
+        ("round_robin with time quantum: 8"),
+        ("round_robin with time quantum: 16"),
+    ]
+
+    multi_level_algo_labels = []
+    multi_level_algo_menus = []
+    multi_level_algorithms = []
+    multi_level_pr_labels = []
+    multi_level_processes = []
+    for level in range(3):
+        multi_level_algo_labels.append(tk.Label(third, text=f"Level {level+1} Algorithm:"))  
+        multi_level_pr_labels.append(tk.Label(third, text=f"Process IDs for {level+1} Level [Separated by ',']: "))
+        multi_level_algorithms.append(tk.StringVar())
+        multi_level_algorithms[level].set("fcfs")
+        multi_level_algo_menus.append(tk.OptionMenu(third, multi_level_algorithms[level], *multi_algos))
+        multi_level_processes.append(tk.Entry(third))
+
     def select_algo(algorithm):
         global submit
         global extra
         extra = None
         lab.config(text=op.get())
-        if algorithm == "round_robin":
+        def clear():
+            sl.grid_forget()
             pr_title.grid_forget()
             pris_title.grid_forget()
             for i in range(len(pr)):
                 pr_idx[i].grid_forget()
                 pr_pris[i].grid_forget()
+            for level in range(3):
+                    multi_level_algo_labels[level].grid_forget()
+                    multi_level_algo_menus[level].grid_forget()
+                    multi_level_pr_labels[level].grid_forget()
+                    multi_level_processes[level].grid_forget()
+        clear()
+        if algorithm == "round_robin":
             sl.grid(row=20, column=1)
             extra = sl
         elif algorithm == "priority_queue":
-            sl.grid_forget()
             pr_title.grid(row=19, column=0)
             pris_title.grid(row=19, column=2)
             for i in range(len(pr)):
                 pr_idx[i].grid(row=20+i, column=0)
                 pr_pris[i].grid(row=20+i, column=2)
             extra = pr_pris
-        else:
-            sl.grid_forget()
-            pr_title.grid_forget()
-            pris_title.grid_forget()
-            for i in range(len(pr)):
-                pr_idx[i].grid_forget()
-                pr_pris[i].grid_forget()
+        elif algorithm == "multi_level_queue":
+            for level in range(3):
+                    multi_level_algo_labels[level].grid(row=20+level, column=0)
+                    multi_level_algo_menus[level].grid(row=20+level, column=2)
+                    multi_level_pr_labels[level].grid(row=23+level, column=0)
+                    multi_level_processes[level].grid(row=23+level, column=2)
+            extra = [multi_level_algorithms, multi_level_processes]
         submit = algorithm
 
     lab = tk.Label(third)
     modes = [
-        ("Default Algo"),
+        ("default_algorithm"),
         ("fcfs"),
         ("sjf_non_pre"),
         ("sjf_pre"),
         ("round_robin"),
-        ("priority_queue")
+        ("priority_queue"),
+        ("multi_level_queue")
     ]
     op = tk.StringVar()
-    op.set("Default Algo")
+    op.set("default_algorithm")
     option = tk.OptionMenu(third, op, *modes)
     b = tk.Button(third, text="Select Algorithm", height=2, width=20, command=lambda: select_algo(op.get()))    
     b1 = tk.Button(third, text="Go to Main", height=2, width=20, command=lambda:goto_main(third))
