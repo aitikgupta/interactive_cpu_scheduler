@@ -61,6 +61,7 @@ def goto_submission(second, queue):
     pr_idx = [0 for i in pr]    
     pr_title = tk.Label(third, text="Process ID:")
     pris_title = tk.Label(third, text="Priorities:")
+    time_quantum = tk.Label(third, text="Time Quantum")
     for i in range(len(pr)):
         pr_idx[i] = tk.Label(third, text=pr[i])
         pr_pris[i] = tk.Entry(third)
@@ -93,6 +94,7 @@ def goto_submission(second, queue):
         lab.config(text=op.get())
         def clear():
             sl.grid_forget()
+            time_quantum.grid_forget()
             pr_title.grid_forget()
             pris_title.grid_forget()
             for i in range(len(pr)):
@@ -107,6 +109,7 @@ def goto_submission(second, queue):
         if algorithm == "round_robin":
             sl.grid(row=20, column=1)
             extra = sl
+            time_quantum.grid(row=21, column=1)
         elif algorithm == "non_pre_priority_queue" or algorithm =="pre_priority_queue":
             pr_title.grid(row=19, column=0)
             pris_title.grid(row=19, column=2)
@@ -119,11 +122,11 @@ def goto_submission(second, queue):
             for level in range(3):
                     multi_level_algo_labels[level].grid(row=20+level, column=0)
                     multi_level_algo_menus[level].grid(row=20+level, column=2)
+                    multi_level_algo_menus[level].config(height=1, width=30)
                     multi_level_pr_labels[level].grid(row=23+level, column=0)
                     multi_level_processes[level].grid(row=23+level, column=2)
             extra = [multi_level_algorithms, multi_level_processes]
         submit = algorithm
-
     lab = tk.Label(third)
     modes = [
         ("default_algorithm"),
@@ -141,13 +144,12 @@ def goto_submission(second, queue):
     b = tk.Button(third, text="Select Algorithm", height=2, width=20, command=lambda: select_algo(op.get()))    
     b1 = tk.Button(third, text="Go to Main", height=2, width=20, command=lambda:goto_main(third))
     b2 = tk.Button(third, text="Submit for Processing", height=2, width=20, command=lambda:algo(third, submit, queue, extra))
-    
-    option.grid(row=0, column=1,padx=150, pady=40)
-    b.grid(row=5, column=1, padx=100, pady=30, sticky=tk.NSEW)
-    lab.grid(row=8, column=1)
-    b1.grid(row=5, column=0, padx=100, pady=30, sticky=tk.NSEW)
-    b2.grid(row=5, column=2, padx=100, pady=30, sticky=tk.NSEW)
-
+    option.config(height=1, width=20)
+    option.grid(row=0, column=1, padx=120, pady=40)
+    b.grid(row=1, column=1, padx=100, pady=30, sticky=tk.NSEW)
+    b1.grid(row=1, column=0, padx=100, pady=30, sticky=tk.NSEW)
+    b2.grid(row=1, column=2, padx=120, pady=30, sticky=tk.NSEW)
+    lab.grid(row=2, column=1)
 
 def goto_random_queue():
     second = tk.Toplevel()
@@ -171,7 +173,7 @@ def goto_random_queue():
                 row1+=1
                 queue.append((pid, burst_time, arr_time))
             return queue
-    random_queue = generate_random_queue(length = 6)
+    random_queue = generate_random_queue(length=6)
     v = tk.Label(second, text="Your Queue is:", font=("New Times Roman", 25, "normal"))
     value1 = tk.Label(second, text="Process ID", font=("Times New Roman", 15, "normal")).grid(row=1, column=0)
     value2 = tk.Label(second, text="Burst Time", font=("Times New Roman", 15, "normal")).grid(row=1, column=1)
@@ -200,9 +202,9 @@ def goto_user_queue():
     lab4 = tk.Label(second, text="Process ID", font=("New Times Roman", 10, "normal"))
     lab5 = tk.Label(second, text="Burst Time", font=("New Times Roman", 10, "normal"))
     lab6 = tk.Label(second, text="Arrival Time", font=("New Times Roman", 10, "normal"))
-    e1.grid(row=1, column=0, padx=180, pady=10, ipady=4, ipadx=2)
-    e2.grid(row=1, column=1, padx=100, pady=10, ipady=4, ipadx=2)
-    e3.grid(row=1, column=2, padx=180, pady=10, ipady=4, ipadx=2)
+    e1.grid(row=1, column=0, padx=115, pady=10, ipady=4, ipadx=2)
+    e2.grid(row=1, column=1, padx=115, pady=10, ipady=4, ipadx=2)
+    e3.grid(row=1, column=2, padx=115, pady=10, ipady=4, ipadx=2)
     lab1.grid(row=0, column=0, padx=30, pady=30)
     lab2.grid(row=0, column=1, padx=20, pady=30)
     lab3.grid(row=0, column=2, padx=30, pady=30)
@@ -256,5 +258,4 @@ w.grid(row=0, column=1, padx=425, pady=100, columnspan=3)
 b1.grid(row=1, column=1, sticky=tk.NSEW, padx=40, pady=30)
 b2.grid(row=1, column=2, sticky=tk.NSEW, padx=40, pady=30)
 b3.grid(row=1, column=3, sticky=tk.NSEW, padx=40, pady=30)
-
 root.mainloop()
