@@ -13,15 +13,14 @@ CPU Scheduling Algorithms included:
 9.	Also a default algorithm is provided for comparison which is based on general algorithms used in common operating systems.
 
 Requirements
-We recommend using Python 3.7.x for this application. Install tkinter using:
-
-	pip install python-tk
+We recommend using Python 3.7.x for this application as Tkinter comes bundled with Python from 3.7 onwards.
 
 Instructions
 Use your command line to run the following commands.
 	
 	git clone https://github.com/aitikgupta/interactive_cpu_scheduler.git
 	cd interactive_cpu_scheduler
+	pip install -r requirements.txt
 	python gui.py
 
 Output Parameters:
