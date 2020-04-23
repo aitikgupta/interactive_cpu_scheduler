@@ -35,6 +35,7 @@ def default_algorithm(processes):
 				minm = count[i]
 		if(check == False):
 			time += 1
+			continue
 		count[pid] += 1
 		if(count[pid] <= threshold):
 			if(count[pid] == 1):
