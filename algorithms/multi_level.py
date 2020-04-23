@@ -1,9 +1,5 @@
 from algorithms.fcfs import fcfs
-from algorithms.sjf_non_pre import sjf_non_pre
-from algorithms.sjf_pre import sjf_pre
 from algorithms.round_robin import round_robin
-from algorithms.priority_non_pre import priority_non_pre
-from algorithms.priority_queue_pre import priority_queue_pre
 
 def multi_level(algorithms, process):
 	f_output=[]
