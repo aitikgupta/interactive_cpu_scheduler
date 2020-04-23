@@ -7,6 +7,8 @@ from algorithms.sjf_pre import sjf_pre
 from algorithms.round_robin import round_robin
 from algorithms.priority_non_pre import priority_non_pre
 from algorithms.priority_queue_pre import priority_queue_pre
+from algorithms.multi_level_feedback import multi_level_feedback
+from algorithms.default_algorithm import default_algorithm
 from tkinter import messagebox
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
@@ -16,18 +18,26 @@ root.geometry(size)
 
 def algo(window, algorithm, queue, extra):
     def show_output(algorithm, output, default_output):
+        def ret():
+            top_out.grid_forget()
+            top_def.grid_forget()
+            label.grid_forget()
+            def_label.grid_forget()
+            button.grid_forget()
+            output_win.destroy()
+            
         output_win = tk.Toplevel()
         # output_win.geometry(size_out)
-        button = tk.Button(output_win, text="Go Back", command=output_win.destroy)
+        button = tk.Button(output_win, text="Go Back", command=ret)
 
         wait_time = output[0]
         response_time = output[1]
         turnaround_time = output[2]
         throughput = output[3]
-        def_wait_time = output[0]
-        def_response_time = output[1]
-        def_turnaround_time = output[2]
-        def_throughput = output[3]
+        def_wait_time = default_output[0]
+        def_response_time = default_output[1]
+        def_turnaround_time = default_output[2]
+        def_throughput = default_output[3]
         # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
         out = f"\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
         default_out = out = f"\n\nAverage Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
@@ -74,7 +84,6 @@ def algo(window, algorithm, queue, extra):
                     if proc[0] == j:
                         level_wise_processes.append(proc)
             processes.append(level_wise_processes)
-        # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{processes}")
         output = sample_function(multi_level_algorithms, processes)
     elif algorithm == "Multi Level Feedback Queue":
         threshold = extra[1].get()
@@ -88,23 +97,13 @@ def algo(window, algorithm, queue, extra):
         if quantums != sorted(quantums):
             messagebox.showerror("Invalid time quantums found!", "Time Quantums should be in increasing order level-wise.")
             return
-        # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{threshold}")
-        output = sample_function(multi_level_algorithms, threshold)
+        output = multi_level_feedback(queue, multi_level_algorithms, threshold)
     elif algorithm == "Default Algorithm":
-        output = sample_function(queue)
+        output = default_algorithm(queue)
     else:
         messagebox.showerror("Select Algorithm First!", "Click on Select Algorithm button before submitting.")
         return
-
-    default_output = sample_function(queue)
-    # wait_time = output[0]
-    # response_time = output[1]
-    # turnaround_time = output[2]
-    # throughput = output[3]
-    # # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-    # out = f"\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-    # # messagebox.showinfo(f"Output of {algorithm} algorithm!", out)
-    # # label = tk.Label(window, text=out, justify="left").grid(row=20, column=1)
+    default_output = default_algorithm(queue)
     show_output(algorithm, output, default_output)
 
 
