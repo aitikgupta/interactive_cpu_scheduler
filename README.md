@@ -29,9 +29,9 @@ python gui.py
 4.   Throughput
 
 ### Contributors:
-1.	 [Aadit Agarwal](https://github.com/aaditagarwal)
-2.	 [Aashish B Khatri](https://github.com/aashish-khatri)
-3.	 [Abhishek Jindal](https://github.com/abhishekjindal09)
-4. 	 [Aitik Gupta](https://github.com/aitikgupta)
-5. 	 [Himanshu Ruhela](https://github.com/verdantfire)
-6.	 [Madhavik Agarwal](https://github.com/madhavik0512)
+1.	 [Aadit Agarwal](https://github.com/aaditagarwal) 2018IMT-001
+2.	 [Aashish B Khatri](https://github.com/aashish-khatri) 2018IMT-003
+3.	 [Abhishek Jindal](https://github.com/abhishekjindal09) 2018IMT-006
+4. 	 [Aitik Gupta](https://github.com/aitikgupta) 2018IMT-010
+5. 	 [Himanshu Ruhela](https://github.com/verdantfire) 2018IMT-039
+6.	 [Madhavik Agarwal](https://github.com/madhavik0512) 2018IMT-048
