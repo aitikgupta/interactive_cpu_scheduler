@@ -11,12 +11,7 @@ def default_algorithm(processes):
 	total_tat = 0
 	count = [0] * n
 	complete = 0
-
-	arr = [0] * n
-	for i in range(n): 
-		arr[i] = processes[i][2]
-	time = min(arr)
-	
+	time = 0
 	check = False
 	pid = 9999
 	order = []
