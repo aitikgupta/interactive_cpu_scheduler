@@ -34,6 +34,7 @@ def algo(window, algorithm, queue, extra):
         multi_level_algorithms = [algori.get() for algori in extra[0]]
         processes = []
         for prid in extra[1]:
+            level_wise_processes = []
             try:
                 idx = [int(i) for i in prid.get().strip().split(",")]
             except:
@@ -45,7 +46,8 @@ def algo(window, algorithm, queue, extra):
                     return
                 for proc in queue:
                     if proc[0] == j:
-                        processes.append(proc)
+                        level_wise_processes.append(proc)
+            processes.append(level_wise_processes)
         # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{processes}")
         output = sample_function(multi_level_algorithms, processes)
     elif algorithm == "Default Algorithm":
