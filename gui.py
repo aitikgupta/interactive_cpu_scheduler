@@ -51,13 +51,19 @@ def algo(window, algorithm, queue, extra):
         # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{processes}")
         output = sample_function(multi_level_algorithms, processes)
     elif algorithm == "Multi Level Feedback Queue":
+        threshold = extra[1].get()
+        if not threshold or int(threshold) > 5 or int(threshold) < 1:
+            messagebox.showerror("Invalid thresold found!", "Threshold should be an integer in range (1-5), and can not be empty")
+            return
+        threshold = int(threshold)
         multi_level_algorithms = [algori.get() for algori in extra[0]]
         quantums = [al[-1] for al in multi_level_algorithms if al[0] == "R"]
         quantums = list(map(int, quantums))
         if quantums != sorted(quantums):
             messagebox.showerror("Invalid time quantums found!", "Time Quantums should be in increasing order level-wise.")
             return
-        output = sample_function(multi_level_algorithms)
+        # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{threshold}")
+        output = sample_function(multi_level_algorithms, threshold)
     elif algorithm == "Default Algorithm":
         output = sample_function(queue)
     else:
@@ -89,6 +95,8 @@ def goto_submission(second, queue):
     pr_title = tk.Label(third, text="Process ID:")
     pris_title = tk.Label(third, text="Priorities:")
     time_quantum = tk.Label(third, text="Time Quantum")
+    feedback_label = tk.Label(third, text="Threshold (integer in range 1-5):")
+    feedback_threshold = tk.Entry(third)
     for i in range(len(pr)):
         pr_idx[i] = tk.Label(third, text=pr[i])
         pr_pris[i] = tk.Entry(third)
@@ -121,7 +129,7 @@ def goto_submission(second, queue):
     multi_level_processes = []
     for level in range(3):
         multi_level_algo_labels.append(tk.Label(third, text=f"Level {level+1} Algorithm:"))  
-        multi_level_pr_labels.append(tk.Label(third, text=f"Process IDs for {level+1} Level [Separated by ',']: "))
+        multi_level_pr_labels.append(tk.Label(third, text=f"Process IDs for {level+1} Level (separated by ','): "))
         multi_level_algorithms.append(tk.StringVar())
         multi_level_algorithms[level].set(multi_algos[level][0])
         multi_level_algo_menus.append(tk.OptionMenu(third, multi_level_algorithms[level], *multi_algos[level]))
@@ -134,6 +142,8 @@ def goto_submission(second, queue):
         lab.config(text=op.get())
         def clear():
             sl.grid_forget()
+            feedback_threshold.grid_forget()
+            feedback_label.grid_forget()
             time_quantum.grid_forget()
             pr_title.grid_forget()
             pris_title.grid_forget()
@@ -171,7 +181,9 @@ def goto_submission(second, queue):
                     multi_level_algo_labels[level].grid(row=20+level, column=0)
                     multi_level_algo_menus[level].grid(row=20+level, column=2)
                     multi_level_algo_menus[level].config(height=1, width=40)
-            extra = [multi_level_algorithms]
+            feedback_label.grid(row=23, column=0)
+            feedback_threshold.grid(row=23, column=2)
+            extra = [multi_level_algorithms, feedback_threshold]
         submit = algorithm
     lab = tk.Label(third)
     modes = [
