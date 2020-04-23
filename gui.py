@@ -30,10 +30,24 @@ def algo(window, algorithm, queue, extra):
         values = [idx.get() for idx in extra]
         output = priority_queue_pre(queue, values)
     elif algorithm == "Multi Level Queue":
+        pids = [inp[0] for inp in queue]
         multi_level_algorithms = [algori.get() for algori in extra[0]]
-        multi_level_processes = [prid.get().split(",") for prid in extra[1]]
-        # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{multi_level_processes}")
-        output = sample_function(multi_level_algorithms, multi_level_processes)
+        processes = []
+        for prid in extra[1]:
+            try:
+                idx = [int(i) for i in prid.get().strip().split(",")]
+            except:
+                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are blank")
+                return
+            for j in idx:
+                if j not in pids:
+                    messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs do not exist in input process IDs")
+                    return
+                for proc in queue:
+                    if proc[0] == j:
+                        processes.append(proc)
+        # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{processes}")
+        output = sample_function(multi_level_algorithms, processes)
     elif algorithm == "Default Algorithm":
         output = sample_function(queue)
     else:
@@ -66,13 +80,26 @@ def goto_submission(second, queue):
         pr_idx[i] = tk.Label(third, text=pr[i])
         pr_pris[i] = tk.Entry(third)
 
-    multi_algos = [
-        ("First Come First Serve"),
+    multi_algos = [[
         ("Round Robin with Time Quantum: 2"),
+        ("Round Robin with Time Quantum: 3"),
         ("Round Robin with Time Quantum: 4"),
-        ("Round Robin with Time Quantum: 8"),
-        ("Round Robin with Time Quantum: 16"),
-    ]
+        ("Round Robin with Time Quantum: 5"),
+        ("Round Robin with Time Quantum: 6"),
+        ("Round Robin with Time Quantum: 7"),
+        ("Round Robin with Time Quantum: 8")
+    ],[
+        ("Round Robin with Time Quantum: 2"),
+        ("Round Robin with Time Quantum: 3"),
+        ("Round Robin with Time Quantum: 4"),
+        ("Round Robin with Time Quantum: 5"),
+        ("Round Robin with Time Quantum: 6"),
+        ("Round Robin with Time Quantum: 7"),
+        ("Round Robin with Time Quantum: 8")
+    ], [
+        ("First Come First Serve")
+    ]]
+        
 
     multi_level_algo_labels = []
     multi_level_algo_menus = []
@@ -83,8 +110,8 @@ def goto_submission(second, queue):
         multi_level_algo_labels.append(tk.Label(third, text=f"Level {level+1} Algorithm:"))  
         multi_level_pr_labels.append(tk.Label(third, text=f"Process IDs for {level+1} Level [Separated by ',']: "))
         multi_level_algorithms.append(tk.StringVar())
-        multi_level_algorithms[level].set("First Come First Serve")
-        multi_level_algo_menus.append(tk.OptionMenu(third, multi_level_algorithms[level], *multi_algos))
+        multi_level_algorithms[level].set(multi_algos[level][0])
+        multi_level_algo_menus.append(tk.OptionMenu(third, multi_level_algorithms[level], *multi_algos[level]))
         multi_level_processes.append(tk.Entry(third))
 
     def select_algo(algorithm):
