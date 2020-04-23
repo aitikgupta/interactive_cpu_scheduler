@@ -11,9 +11,35 @@ from tkinter import messagebox
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
 size = "1150x500"
+size_out = "600x200"
 root.geometry(size)
 
 def algo(window, algorithm, queue, extra):
+    def show_output(algorithm, output, default_output):
+        output_win = tk.Toplevel()
+        # output_win.geometry(size_out)
+        button = tk.Button(output_win, text="Go Back", command=output_win.destroy)
+
+        wait_time = output[0]
+        response_time = output[1]
+        turnaround_time = output[2]
+        throughput = output[3]
+        def_wait_time = output[0]
+        def_response_time = output[1]
+        def_turnaround_time = output[2]
+        def_throughput = output[3]
+        # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+        out = f"\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+        default_out = out = f"\n\nAverage Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
+        label = tk.Label(output_win, text=out, justify="left")
+        def_label = tk.Label(output_win, text=default_out, justify="left")
+        top_out = tk.Label(output_win, text=f"Selected Algorithm:\n({algorithm})")
+        top_def = tk.Label(output_win, text="Default Algorithm:")
+        top_out.grid(row=0, column=0)
+        top_def.grid(row=0, column=2)
+        label.grid(row=1, column=0)
+        def_label.grid(row=1, column=2)
+        button.grid(row=10, column=1)
     if algorithm == "First Come First Serve":
         output = fcfs(queue)
     elif algorithm == "Shortest Job First Non Preemption":
@@ -69,14 +95,18 @@ def algo(window, algorithm, queue, extra):
     else:
         messagebox.showerror("Select Algorithm First!", "Click on Select Algorithm button before submitting.")
         return
-    wait_time = output[0]
-    response_time = output[1]
-    turnaround_time = output[2]
-    throughput = output[3]
-    # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-    out = f"\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-    messagebox.showinfo(f"Output of {algorithm} algorithm!", out)
-    # label = tk.Label(window, text=out, justify="left").grid(row=20, column=1)
+
+    default_output = sample_function(queue)
+    # wait_time = output[0]
+    # response_time = output[1]
+    # turnaround_time = output[2]
+    # throughput = output[3]
+    # # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+    # out = f"\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+    # # messagebox.showinfo(f"Output of {algorithm} algorithm!", out)
+    # # label = tk.Label(window, text=out, justify="left").grid(row=20, column=1)
+    show_output(algorithm, output, default_output)
+
 
 def goto_submission(second, queue):
     global submit
