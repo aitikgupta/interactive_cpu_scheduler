@@ -10,7 +10,7 @@ This is a GUI application which provides a dynamic and interactive interface to 
 6.	 Round Robin with a range of time quanta available
 7.	 Multi-Level Queue with custom levels
 8.	 Multi-Level Feedback Queue with custom levels
-9.   *Also a default algorithm is provided for comparison.* 
+9.   *Also a default algorithm is provided for comparison which is based on general algorithms used in common operating systems.* 
 
 ### Output Parameters:
 1.   Average Waiting Time
