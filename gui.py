@@ -9,6 +9,7 @@ from algorithms.priority_non_pre import priority_non_pre
 from algorithms.priority_queue_pre import priority_queue_pre
 from algorithms.multi_level_feedback import multi_level_feedback
 from algorithms.default_algorithm import default_algorithm
+from algorithms.multi_level import multi_level
 from tkinter import messagebox
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
@@ -84,7 +85,7 @@ def algo(window, algorithm, queue, extra):
                     if proc[0] == j:
                         level_wise_processes.append(proc)
             processes.append(level_wise_processes)
-        output = sample_function(multi_level_algorithms, processes)
+        output = multi_level(multi_level_algorithms, processes)
     elif algorithm == "Multi Level Feedback Queue":
         threshold = extra[1].get()
         if not threshold or int(threshold) > 5 or int(threshold) < 1:
