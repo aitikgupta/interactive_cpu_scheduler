@@ -38,11 +38,11 @@ def algo(window, algorithm, queue, extra):
             try:
                 idx = [int(i) for i in prid.get().strip().split(",")]
             except:
-                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are blank")
+                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are blank.")
                 return
             for j in idx:
                 if j not in pids:
-                    messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs do not exist in input process IDs")
+                    messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs do not exist in input process IDs.")
                     return
                 for proc in queue:
                     if proc[0] == j:
@@ -52,11 +52,16 @@ def algo(window, algorithm, queue, extra):
         output = sample_function(multi_level_algorithms, processes)
     elif algorithm == "Multi Level Feedback Queue":
         multi_level_algorithms = [algori.get() for algori in extra[0]]
+        quantums = [al[-1] for al in multi_level_algorithms if al[0] == "R"]
+        quantums = list(map(int, quantums))
+        if quantums != sorted(quantums):
+            messagebox.showerror("Invalid time quantums found!", "Time Quantums should be in increasing order level-wise.")
+            return
         output = sample_function(multi_level_algorithms)
     elif algorithm == "Default Algorithm":
         output = sample_function(queue)
     else:
-        messagebox.showerror("Select Algorithm First!", "Click on Select Algorithm button before submitting!")
+        messagebox.showerror("Select Algorithm First!", "Click on Select Algorithm button before submitting.")
         return
     wait_time = output[0]
     response_time = output[1]
