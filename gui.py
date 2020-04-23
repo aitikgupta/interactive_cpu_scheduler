@@ -279,7 +279,7 @@ def goto_submission(second, queue):
     b1.grid(row=2, column=0, padx=70, pady=30, sticky=tk.NSEW)
     b2.grid(row=2, column=2, padx=70, pady=30, sticky=tk.NSEW)
     lab.grid(row=3, column=1)
-    ids_stat.grid(row=0, column=0, columnspan=3, sticky=tk.W+tk.E)
+    ids_stat.grid(row=0, column=0, columnspan=3, padx=90, sticky=tk.W+tk.E)
 
 def goto_random_queue():
     second = tk.Toplevel()
