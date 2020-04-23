@@ -12,6 +12,19 @@ This is a GUI application which provides a dynamic and interactive interface to 
 8.	 Multi-Level Feedback Queue with custom levels
 9.   *Also a default algorithm is provided for comparison which is based on general algorithms used in common operating systems.* 
 
+### Requirements
+We recommend using Python 3.7.x for this application.
+Install tkinter using:
+```
+pip install python-tk
+```
+### Instructions
+```
+git clone https://github.com/aitikgupta/interactive_cpu_scheduler.git
+cd interactive_cpu_scheduler
+python gui.py
+```
+
 ### Output Parameters:
 1.   Average Waiting Time
 2.   Average Response Time
