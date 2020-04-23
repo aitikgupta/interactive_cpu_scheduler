@@ -50,7 +50,7 @@ def algo(window, algorithm, queue, extra):
         t2 = tk.Label(output_win, text="Burst Time", font=("Times New Roman", 15, "normal"))
         t3 = tk.Label(output_win, text="Arrival Time", font=("Times New Roman", 15, "normal"))
         t1.grid(row=0, column=0, padx=90, pady=20)
-        t2.grid(row=0, column=1, padx=70, pady=20)
+        t2.grid(row=0, column=1, pady=20)
         t3.grid(row=0, column=2, padx=90, pady=20)
         pri = [process[0] for process in queue]
         burst = [process[1] for process in queue]
@@ -60,11 +60,11 @@ def algo(window, algorithm, queue, extra):
             tk.Label(output_win, text=burst[i], font=("Times New Roman", 12, "normal")).grid(row=1+i, column=1)
             tk.Label(output_win, text=arriv[i], font=("Times New Roman", 12, "normal")).grid(row=1+i, column=2)
         tk.Label(output_win, text=" ",).grid(row=8, column=1, pady=10)
-        top_out.grid(row=10, column=0, padx=100, pady=10)
-        top_def.grid(row=10, column=2, padx=100)
-        label.grid(row=11, column=0, padx=100)
-        def_label.grid(row=11, column=2, padx=100)
-        button.grid(row=16, column=1, padx=100, pady=10, sticky=tk.NSEW)
+        top_out.grid(row=10, column=0, padx=90, pady=10)
+        top_def.grid(row=10, column=2, padx=90)
+        label.grid(row=11, column=0, padx=90)
+        def_label.grid(row=11, column=2, padx=90)
+        button.grid(row=12, column=1, padx=100, sticky=tk.NSEW)
     if algorithm == "First Come First Serve":
         output = fcfs(queue)
     elif algorithm == "Shortest Job First Non Preemption":
