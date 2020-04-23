@@ -2,15 +2,15 @@ Interactive CPU Scheduler
 This is a GUI application which provides a dynamic and interactive interface to compare and evaluate CPU scheduling algorithms.
 
 CPU Scheduling Algorithms included:
-1.   First Come First Serve (FCFS)
-2.   Shortest Job First (SJF)
-3.   Shortest Time Remaining First (SRTF) (Pre-emptive SJF)
-4.	 Priority Queue (Non Pre-emptive)
-5.	 Priority Queue (Pre-emptive)
-6.	 Round Robin with a range of time quanta available
-7.	 Multi-Level Queue with custom levels
-8.	 Multi-Level Feedback Queue with custom levels
-9.   Also a default algorithm is provided for comparison which is based on general algorithms used in common operating systems.
+1.	First Come First Serve (FCFS)
+2.	Shortest Job First (SJF)
+3.	Shortest Time Remaining First (SRTF) (Pre-emptive SJF)
+4.	Priority Queue (Non Pre-emptive)
+5.	Priority Queue (Pre-emptive)
+6.	Round Robin with a range of time quanta available
+7.	Multi-Level Queue with custom levels
+8.	Multi-Level Feedback Queue with custom levels
+9.	Also a default algorithm is provided for comparison which is based on general algorithms used in common operating systems.
 
 Output Parameters:
 1.   Average Waiting Time
