@@ -30,9 +30,9 @@ Output Parameters:
 4.	Throughput
 
 Contributors:
-1.	Aadit Agarwal 	 2018IMT-001 (https://github.com/aaditagarwal)
-2.	Aashish B Khatri 2018IMT-003 (https://github.com/aashish-khatri)
-3.	Abhishek Jindal	 2018IMT-006 (https://github.com/abhishekjindal09)
-4.	Aitik Gupta	 2018IMT-010 (https://github.com/aitikgupta)
-5.	Himanshu Ruhela	 2018IMT-039 (https://github.com/verdantfire)
-6.	Madhavik Agarwal 2018IMT-048 (https://github.com/madhavik0512)
+1.	Aadit Agarwal 	 (https://github.com/aaditagarwal)
+2.	Aashish B Khatri (https://github.com/aashish-khatri)
+3.	Abhishek Jindal	 (https://github.com/abhishekjindal09)
+4.	Aitik Gupta	 (https://github.com/aitikgupta)
+5.	Himanshu Ruhela	 (https://github.com/verdantfire)
+6.	Madhavik Agarwal (https://github.com/madhavik0512)
