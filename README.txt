@@ -13,17 +13,16 @@ CPU Scheduling Algorithms included:
 9.	Also a default algorithm is provided for comparison which is based on general algorithms used in common operating systems.
 
 Requirements
-	We recommend using Python 3.7.x for this application.
-	Install tkinter using:
+We recommend using Python 3.7.x for this application. Install tkinter using:
 
-		pip install python-tk
+	pip install python-tk
 
 Instructions
-	Use your command line to run the following commands.
+Use your command line to run the following commands.
 	
-		git clone https://github.com/aitikgupta/interactive_cpu_scheduler.git
-		cd interactive_cpu_scheduler
-		python gui.py
+	git clone https://github.com/aitikgupta/interactive_cpu_scheduler.git
+	cd interactive_cpu_scheduler
+	python gui.py
 
 Output Parameters:
 1.	Average Waiting Time
@@ -35,6 +34,6 @@ Contributors:
 1.	Aadit Agarwal 	(https://github.com/aaditagarwal)
 2.	Aashish B Khatri(https://github.com/aashish-khatri)
 3.	Abhishek Jindal	(https://github.com/abhishekjindal09)
-4.	Aitik Gupta		(https://github.com/aitikgupta)
+4.	Aitik Gupta	(https://github.com/aitikgupta)
 5.	Himanshu Ruhela	(https://github.com/verdantfire)
 6.	Madhavik Agarwal(https://github.com/madhavik0512)
