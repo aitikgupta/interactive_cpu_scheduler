@@ -41,7 +41,7 @@ def algo(window, algorithm, queue, extra):
         def_throughput = default_output[3]
         # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
         out = f"\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-        default_out = out = f"\n\nAverage Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
+        default_out = f"\n\nAverage Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
         label = tk.Label(output_win, text=out, justify="left")
         def_label = tk.Label(output_win, text=default_out, justify="left")
         top_out = tk.Label(output_win, text=f"Selected Algorithm:\n({algorithm})")
@@ -61,11 +61,37 @@ def algo(window, algorithm, queue, extra):
         value = extra.get()
         output = round_robin(queue, value)
     elif algorithm == "Non Preemption Priority Queue":
-        values = [idx.get() for idx in extra]
-        output = priority_non_pre(queue, values)
+        priorities = []
+        for idx in extra:
+            try:
+                value = int(idx.get())
+            except:
+                messagebox.showerror("Invalid priorities found!", "One or more priorities are not integer.")
+                return
+            if not value:
+                messagebox.showerror("Invalid priorities found!", "One or more priorities are blank.")
+                return
+            priorities.append(value)
+        if sorted(priorities) != sorted(list(set(priorities))):
+            messagebox.showerror("Invalid priorities found!", "One or more priorities are not unique.")
+            return
+        output = priority_non_pre(queue, priorities)
     elif algorithm == "Preemption Priority Queue":
-        values = [idx.get() for idx in extra]
-        output = priority_queue_pre(queue, values)
+        priorities = []
+        for idx in extra:
+            try:
+                value = int(idx.get())
+            except:
+                messagebox.showerror("Invalid priorities found!", "One or more priorities are not integer.")
+                return
+            if not value:
+                messagebox.showerror("Invalid priorities found!", "One or more priorities are blank.")
+                return
+            priorities.append(value)
+        if sorted(priorities) != sorted(list(set(priorities))):
+            messagebox.showerror("Invalid priorities found!", "One or more priorities are not unique.")
+            return
+        output = priority_queue_pre(queue, priorities)
     elif algorithm == "Multi Level Queue":
         pids = [inp[0] for inp in queue]
         multi_level_algorithms = [algori.get() for algori in extra[0]]
@@ -89,7 +115,7 @@ def algo(window, algorithm, queue, extra):
     elif algorithm == "Multi Level Feedback Queue":
         threshold = extra[1].get()
         if not threshold or int(threshold) > 5 or int(threshold) < 1:
-            messagebox.showerror("Invalid thresold found!", "Threshold should be an integer in range (1-5), and can not be empty")
+            messagebox.showerror("Invalid thresold found!", "Threshold should be an integer in range (1-5), and can not be empty.")
             return
         threshold = int(threshold)
         multi_level_algorithms = [algori.get() for algori in extra[0]]
