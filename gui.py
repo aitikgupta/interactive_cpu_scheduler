@@ -50,6 +50,9 @@ def algo(window, algorithm, queue, extra):
             processes.append(level_wise_processes)
         # messagebox.showinfo("",f"{multi_level_algorithms}\n\n\n{processes}")
         output = sample_function(multi_level_algorithms, processes)
+    elif algorithm == "Multi Level Feedback Queue":
+        multi_level_algorithms = [algori.get() for algori in extra[0]]
+        output = sample_function(multi_level_algorithms)
     elif algorithm == "Default Algorithm":
         output = sample_function(queue)
     else:
@@ -59,7 +62,8 @@ def algo(window, algorithm, queue, extra):
     response_time = output[1]
     turnaround_time = output[2]
     throughput = output[3]
-    out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+    # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+    out = f"\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
     messagebox.showinfo(f"Output of {algorithm} algorithm!", out)
     # label = tk.Label(window, text=out, justify="left").grid(row=20, column=1)
 
@@ -71,6 +75,8 @@ def goto_submission(second, queue):
     third = tk.Toplevel()
     second.withdraw()
     third.geometry(size)
+    ids = [pri[0] for pri in queue]
+    ids_stat = tk.Label(third, text=f"Process IDs: {ids}", relief=tk.SUNKEN, bd=2)
     sl = tk.Scale(third, from_=1, to=7, orient=tk.HORIZONTAL)
     pr = [process[0] for process in queue]
     pr_pris = [0 for i in pr]
@@ -155,6 +161,12 @@ def goto_submission(second, queue):
                     multi_level_pr_labels[level].grid(row=23+level, column=0)
                     multi_level_processes[level].grid(row=23+level, column=2)
             extra = [multi_level_algorithms, multi_level_processes]
+        elif algorithm == "Multi Level Feedback Queue":
+            for level in range(3):
+                    multi_level_algo_labels[level].grid(row=20+level, column=0)
+                    multi_level_algo_menus[level].grid(row=20+level, column=2)
+                    multi_level_algo_menus[level].config(height=1, width=40)
+            extra = [multi_level_algorithms]
         submit = algorithm
     lab = tk.Label(third)
     modes = [
@@ -165,7 +177,8 @@ def goto_submission(second, queue):
         ("Round Robin"),
         ("Non Preemption Priority Queue"),
         ("Preemption Priority Queue"),
-        ("Multi Level Queue")
+        ("Multi Level Queue"),
+        ("Multi Level Feedback Queue")
     ]
     op = tk.StringVar()
     op.set("Default Algorithm")
@@ -174,11 +187,12 @@ def goto_submission(second, queue):
     b1 = tk.Button(third, text="Go to Main", height=2, width=30, command=lambda:goto_main(third))
     b2 = tk.Button(third, text="Submit for Processing", height=2, width=30, command=lambda:algo(third, submit, queue, extra))
     option.config(height=1, width=30)
-    option.grid(row=0, column=1, padx=60, pady=40)
-    b.grid(row=1, column=1, padx=60, pady=30, sticky=tk.NSEW)
-    b1.grid(row=1, column=0, padx=70, pady=30, sticky=tk.NSEW)
-    b2.grid(row=1, column=2, padx=70, pady=30, sticky=tk.NSEW)
-    lab.grid(row=2, column=1)
+    option.grid(row=1, column=1, padx=60, pady=40)
+    b.grid(row=2, column=1, padx=60, pady=30, sticky=tk.NSEW)
+    b1.grid(row=2, column=0, padx=70, pady=30, sticky=tk.NSEW)
+    b2.grid(row=2, column=2, padx=70, pady=30, sticky=tk.NSEW)
+    lab.grid(row=3, column=1)
+    ids_stat.grid(row=0, column=0, columnspan=3, sticky=tk.W+tk.E)
 
 def goto_random_queue():
     second = tk.Toplevel()
