@@ -28,8 +28,8 @@ def algo(window, algorithm, queue, extra):
             output_win.destroy()
             
         output_win = tk.Toplevel()
-        # output_win.geometry(size_out)
-        button = tk.Button(output_win, text="Go Back", command=ret)
+        output_win.geometry(size)
+        button = tk.Button(output_win, text="Go Back", command=ret, height=2, width=14)
 
         wait_time = output[0]
         response_time = output[1]
@@ -40,17 +40,31 @@ def algo(window, algorithm, queue, extra):
         def_turnaround_time = default_output[2]
         def_throughput = default_output[3]
         # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-        out = f"\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
-        default_out = f"\n\nAverage Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
-        label = tk.Label(output_win, text=out, justify="left")
-        def_label = tk.Label(output_win, text=default_out, justify="left")
-        top_out = tk.Label(output_win, text=f"Selected Algorithm:\n({algorithm})")
-        top_def = tk.Label(output_win, text="Default Algorithm:")
-        top_out.grid(row=0, column=0)
-        top_def.grid(row=0, column=2)
-        label.grid(row=1, column=0)
-        def_label.grid(row=1, column=2)
-        button.grid(row=10, column=1)
+        out = f"Average Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
+        default_out = f"Average Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
+        label = tk.Label(output_win, text=out, justify="left", font=("Times New Roman", 12, "normal"))
+        def_label = tk.Label(output_win, text=default_out, justify="left", font=("Times New Roman", 12, "normal"))
+        top_out = tk.Label(output_win, text=f"Selected Algorithm:\n({algorithm})", font=("Times New Roman", 15, "normal"))
+        top_def = tk.Label(output_win, text="Default Algorithm:", font=("Times New Roman", 15, "normal"))
+        t1 = tk.Label(output_win, text="Process ID", font=("Times New Roman", 15, "normal"))
+        t2 = tk.Label(output_win, text="Burst Time", font=("Times New Roman", 15, "normal"))
+        t3 = tk.Label(output_win, text="Arrival Time", font=("Times New Roman", 15, "normal"))
+        t1.grid(row=0, column=0, padx=90, pady=20)
+        t2.grid(row=0, column=1, padx=70, pady=20)
+        t3.grid(row=0, column=2, padx=90, pady=20)
+        pri = [process[0] for process in queue]
+        burst = [process[1] for process in queue]
+        arriv = [process[2] for process in queue]
+        for i in range(len(pri)):
+            tk.Label(output_win, text=pri[i], font=("Times New Roman", 12, "normal")).grid(row=1+i, column=0)
+            tk.Label(output_win, text=burst[i], font=("Times New Roman", 12, "normal")).grid(row=1+i, column=1)
+            tk.Label(output_win, text=arriv[i], font=("Times New Roman", 12, "normal")).grid(row=1+i, column=2)
+        tk.Label(output_win, text=" ",).grid(row=8, column=1, pady=10)
+        top_out.grid(row=10, column=0, padx=100, pady=10)
+        top_def.grid(row=10, column=2, padx=100)
+        label.grid(row=11, column=0, padx=100)
+        def_label.grid(row=11, column=2, padx=100)
+        button.grid(row=16, column=1, padx=100, pady=10, sticky=tk.NSEW)
     if algorithm == "First Come First Serve":
         output = fcfs(queue)
     elif algorithm == "Shortest Job First Non Preemption":
