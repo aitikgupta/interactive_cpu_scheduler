@@ -11,6 +11,8 @@ from algorithms.multi_level_feedback import multi_level_feedback
 from algorithms.default_algorithm import default_algorithm
 from algorithms.multi_level import multi_level
 from tkinter import messagebox
+import webbrowser
+
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
 size = "1150x500"
@@ -39,7 +41,6 @@ def algo(window, algorithm, queue, extra):
         def_response_time = default_output[1]
         def_turnaround_time = default_output[2]
         def_throughput = default_output[3]
-        # out = f"Input Queue: {queue}\n\n\nAverage Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
         out = f"Average Waiting Time: {round(wait_time,2)}\n\nAverage Response Time: {round(response_time,2)}\n\nAverage Turnaround Time: {round(turnaround_time,2)}\n\nThroughput: {round(throughput,2)}"
         default_out = f"Average Waiting Time: {round(def_wait_time,2)}\n\nAverage Response Time: {round(def_response_time,2)}\n\nAverage Turnaround Time: {round(def_turnaround_time,2)}\n\nThroughput: {round(def_throughput,2)}"
         label = tk.Label(output_win, text=out, justify="left", font=("Times New Roman", 12, "normal"))
@@ -387,12 +388,65 @@ def goto_user_queue():
     b1.grid(row=2, column=0, padx=50, pady=50, sticky=tk.NSEW)
     b2.grid(row=2, column=1, padx=50, pady=50, sticky=tk.NSEW)
     b3.grid(row=2, column=2, padx=50, pady=50, sticky=tk.NSEW)
-w = tk.Label(root, text = "Make Your Choice", font=('Times New Roman',25,'normal'))
-b1 = tk.Button(root, text="Random Queue", height=3, command=goto_random_queue)
-b2 = tk.Button(root, text="Create Own", height=3, command=goto_user_queue)
+
+def goto_about():
+    about = tk.Toplevel()
+    about.geometry(size_out)
+    root.withdraw()
+    def callback(event):
+        webbrowser.open_new(event.widget.cget("text"))
+    contact0 = "Aadit Agarwal"
+    contact1 = "Aashish B Khatri"
+    contact2 = "Abhishek Jindal"
+    contact3 = "Aitik Gupta"
+    contact4 = "Himanshu Ruhela"
+    contact5 = "Madhavik Agarwal"
+
+    cnt0 = tk.Label(about, text=contact0)
+    cnt1 = tk.Label(about, text=contact1)
+    cnt2 = tk.Label(about, text=contact2)
+    cnt3 = tk.Label(about, text=contact3)
+    cnt4 = tk.Label(about, text=contact4)
+    cnt5 = tk.Label(about, text=contact5)
+
+    lbl0 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl1 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl2 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl3 = tk.Label(about, text=r"aitikgupta@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl4 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl5 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    
+    lbl0.bind("<Button-1>", callback)
+    lbl1.bind("<Button-1>", callback)
+    lbl2.bind("<Button-1>", callback)
+    lbl3.bind("<Button-1>", callback)
+    lbl4.bind("<Button-1>", callback)
+    lbl5.bind("<Button-1>", callback)
+    
+    cnt0.grid(row=0, column=0)
+    cnt1.grid(row=1, column=0)
+    cnt2.grid(row=2, column=0)
+    cnt3.grid(row=3, column=0)
+    cnt4.grid(row=4, column=0)
+    cnt5.grid(row=5, column=0)
+
+    lbl0.grid(row=0, column=1)
+    lbl1.grid(row=1, column=1)
+    lbl2.grid(row=2, column=1)
+    lbl3.grid(row=3, column=1)
+    lbl4.grid(row=4, column=1)
+    lbl5.grid(row=5, column=1)
+    
+    b1 = tk.Button(about, text="Go to Main", height=2, command=lambda:goto_main(about)).grid(row=6, column=0, columnspan=2)
+
+w = tk.Label(root, text = "Welcome to our project.\nChoose:", font=('Times New Roman',25,'normal'))
+b1 = tk.Button(root, text="Random Queue Generation", height=3, command=goto_random_queue)
+b2 = tk.Button(root, text="User-Created Queue Generation", height=3, command=goto_user_queue)
 b3 = tk.Button(root, text="Quit", height=3, command=root.quit)
+b4 = tk.Button(root, text="What am I looking at?", height=3, command=goto_about)
 w.grid(row=0, column=1, padx=425, pady=100, columnspan=3)
 b1.grid(row=1, column=1, sticky=tk.NSEW, padx=40, pady=30)
 b2.grid(row=1, column=2, sticky=tk.NSEW, padx=40, pady=30)
 b3.grid(row=1, column=3, sticky=tk.NSEW, padx=40, pady=30)
+b4.grid(row=2, column=2, sticky=tk.NSEW, padx=40, pady=30)
 root.mainloop()
