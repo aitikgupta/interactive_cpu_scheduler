@@ -16,7 +16,7 @@ import webbrowser
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
 size = "1150x500"
-size_out = "600x200"
+size_out = "800x400"
 root.geometry(size)
 
 def algo(window, algorithm, queue, extra):
@@ -295,11 +295,11 @@ def goto_submission(second, queue):
     b = tk.Button(third, text="Select Algorithm", height=2, width=30, command=lambda: select_algo(op.get()))
     b1 = tk.Button(third, text="Go to Main", height=2, width=30, command=lambda:goto_main(third))
     b2 = tk.Button(third, text="Submit for Processing", height=2, width=30, command=lambda:algo(third, submit, queue, extra))
-    option.config(height=1, width=30)
+    option.config(height=1, width=40)
     option.grid(row=1, column=1, padx=60, pady=40)
     b.grid(row=2, column=1, padx=60, pady=30, sticky=tk.NSEW)
-    b1.grid(row=2, column=0, padx=70, pady=30, sticky=tk.NSEW)
-    b2.grid(row=2, column=2, padx=70, pady=30, sticky=tk.NSEW)
+    b1.grid(row=2, column=0, padx=60, pady=30, sticky=tk.NSEW)
+    b2.grid(row=2, column=2, padx=60, pady=30, sticky=tk.NSEW)
     lab.grid(row=3, column=1)
     ids_stat.grid(row=0, column=0, columnspan=3, padx=90, sticky=tk.W+tk.E)
 
@@ -416,26 +416,28 @@ def goto_about():
     root.withdraw()
     def callback(event):
         webbrowser.open_new(event.widget.cget("text"))
-    contact0 = "Aadit Agarwal"
-    contact1 = "Aashish B Khatri"
-    contact2 = "Abhishek Jindal"
-    contact3 = "Aitik Gupta"
-    contact4 = "Himanshu Ruhela"
-    contact5 = "Madhavik Agarwal"
+    contact0 = "Aadit Agarwal:"
+    contact1 = "Aashish B Khatri:"
+    contact2 = "Abhishek Jindal:"
+    contact3 = "Aitik Gupta:"
+    contact4 = "Himanshu Ruhela:"
+    contact5 = "Madhavik Agarwal:"
 
-    cnt0 = tk.Label(about, text=contact0)
-    cnt1 = tk.Label(about, text=contact1)
-    cnt2 = tk.Label(about, text=contact2)
-    cnt3 = tk.Label(about, text=contact3)
-    cnt4 = tk.Label(about, text=contact4)
-    cnt5 = tk.Label(about, text=contact5)
+    collab = tk.Label(about, text="Collaborators", font=("Times New Roman", 15, "normal"))
+    cnt0 = tk.Label(about, text=contact0, justify=tk.LEFT, font=("Times New Roman", 12, "normal"))
+    cnt1 = tk.Label(about, text=contact1, justify=tk.LEFT, font=("Times New Roman", 12, "normal"))
+    cnt2 = tk.Label(about, text=contact2, justify=tk.LEFT, font=("Times New Roman", 12, "normal"))
+    cnt3 = tk.Label(about, text=contact3, justify=tk.LEFT, font=("Times New Roman", 12, "normal"))
+    cnt4 = tk.Label(about, text=contact4, justify=tk.LEFT, font=("Times New Roman", 12, "normal"))
+    cnt5 = tk.Label(about, text=contact5, justify=tk.LEFT, font=("Times New Roman", 12, "normal"))
 
+    email = tk.Label(about, text="Email", font=("Times New Roman", 15,"normal"))
     lbl0 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
-    lbl1 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl1 = tk.Label(about, text=r"aashishkhatri809@gmail.com", fg="blue", cursor="hand2", anchor="e")
     lbl2 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
     lbl3 = tk.Label(about, text=r"aitikgupta@gmail.com", fg="blue", cursor="hand2", anchor="e")
     lbl4 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
-    lbl5 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl5 = tk.Label(about, text=r"madhavik0512@gmail.com", fg="blue", cursor="hand2", anchor="e")
     
     lbl0.bind("<Button-1>", callback)
     lbl1.bind("<Button-1>", callback)
@@ -443,31 +445,45 @@ def goto_about():
     lbl3.bind("<Button-1>", callback)
     lbl4.bind("<Button-1>", callback)
     lbl5.bind("<Button-1>", callback)
-    
-    cnt0.grid(row=0, column=0)
-    cnt1.grid(row=1, column=0)
-    cnt2.grid(row=2, column=0)
-    cnt3.grid(row=3, column=0)
-    cnt4.grid(row=4, column=0)
-    cnt5.grid(row=5, column=0)
 
-    lbl0.grid(row=0, column=1)
-    lbl1.grid(row=1, column=1)
-    lbl2.grid(row=2, column=1)
-    lbl3.grid(row=3, column=1)
-    lbl4.grid(row=4, column=1)
-    lbl5.grid(row=5, column=1)
+    tk.Label(about, text=" ").grid(row=0, column=0, padx=20)
+    tk.Label(about, text=" ").grid(row=0, column=1, pady=30)
+    collab.grid(row=1, column=1, padx=80, pady=10, sticky=tk.W)
+    cnt0.grid(row=2, column=1, padx=80, sticky=tk.W)
+    cnt1.grid(row=3, column=1, padx=80, sticky=tk.W)
+    cnt2.grid(row=4, column=1, padx=80, sticky=tk.W)
+    cnt3.grid(row=5, column=1, padx=80, sticky=tk.W)
+    cnt4.grid(row=6, column=1, padx=80, sticky=tk.W)
+    cnt5.grid(row=7, column=1, padx=80, sticky=tk.W)
+
+    email.grid(row=1, column=3, padx=80, pady=10, sticky=tk.W)
+    lbl0.grid(row=2, column=3, padx=80, sticky=tk.W)
+    lbl1.grid(row=3, column=3, padx=80, sticky=tk.W)
+    lbl2.grid(row=4, column=3, padx=80, sticky=tk.W)
+    lbl3.grid(row=5, column=3, padx=80, sticky=tk.W)
+    lbl4.grid(row=6, column=3, padx=80, sticky=tk.W)
+    lbl5.grid(row=7, column=3, padx=80, sticky=tk.W)
     
-    b1 = tk.Button(about, text="Go to Main", height=2, command=lambda:goto_main(about)).grid(row=6, column=0, columnspan=2)
+    b1 = tk.Button(about, text="Go to Main", height=2, command=lambda:goto_main(about)).grid(row=8, column=2, pady=60)
+
+def goto_info():
+    info = Tk.Toplevel()
+    info.geometry(size)
+    root.withdraw()
+
+    b1 = tk.Button(about, text="Go to Main", height=2, command=lambda: goto_main(about)).grid(row=6, column=0,
+                                                                                              columnspan=2)
 
 w = tk.Label(root, text = "Welcome to our project.\nChoose:", font=('Times New Roman',25,'normal'))
 b1 = tk.Button(root, text="Random Queue Generation", height=3, command=goto_random_queue)
 b2 = tk.Button(root, text="User-Created Queue Generation", height=3, command=goto_user_queue)
 b3 = tk.Button(root, text="Quit", height=3, command=root.quit)
-b4 = tk.Button(root, text="What am I looking at?", height=3, command=goto_about)
-w.grid(row=0, column=1, padx=425, pady=100, columnspan=3)
-b1.grid(row=1, column=1, sticky=tk.NSEW, padx=40, pady=30)
-b2.grid(row=1, column=2, sticky=tk.NSEW, padx=40, pady=30)
-b3.grid(row=1, column=3, sticky=tk.NSEW, padx=40, pady=30)
-b4.grid(row=2, column=2, sticky=tk.NSEW, padx=40, pady=30)
+b4 = tk.Button(root, text="Contact Us", height=3, command=goto_about)
+b5 = tk.Button(root, text="What Am I Looking At", height=3, command=goto_info)
+w.grid(row=0, column=1, padx=400, pady=70, columnspan=3)
+b1.grid(row=1, column=1, sticky=tk.NSEW, padx=30, pady=10)
+b2.grid(row=1, column=2, sticky=tk.NSEW, padx=20, pady=10)
+b3.grid(row=1, column=3, sticky=tk.NSEW, padx=30, pady=10)
+b4.grid(row=2, column=3, sticky=tk.NSEW, padx=30, pady=10)
+b5.grid(row=2, column=1, sticky=tk.NSEW, padx=30, pady=10)
 root.mainloop()
