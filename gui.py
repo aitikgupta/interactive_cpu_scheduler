@@ -469,7 +469,7 @@ def goto_about():
 def goto_info():
     def cpu_scheduling_terms():
         sche = tk.Toplevel()
-        sche.geometry(size_out)
+        sche.geometry(size)
         l1 = tk.Label(sche, text="CPU Scheduling Terms", font=("Times New Roman", 20, "bold"))
         t1 = "Every process in the ready queue has a unique Process ID, using which it is identified."
         t2 = "The time at which the the process is submitted into the ready queue."
@@ -495,7 +495,7 @@ def goto_info():
         l6.grid(row=6, column=2, pady=10, sticky=tk.W)
     def output_parameters():
          para = tk.Toplevel()
-         para.geometry(size_out)
+         para.geometry(size)
          m1 = tk.Label(para, text="Output Parameters", font=("Times New Roman", 20, "bold"))
          z1 = "The average of the time periods spent waiting in the ready queue by a process to complete its\nexecution from the time it arrived in the ready queue."
          z2 = "The average of the amounts of time periods it takes from when a request was submitted into the\nready queue until the first response is produced, i.e, the time period from arrival of a process\ninto the ready queue to the scheduler allotting the CPU resources to the process for the first time."
@@ -521,7 +521,7 @@ def goto_info():
          m5.grid(row=5, column=2, pady=10, sticky=tk.W+tk.N)
     def algorithm_info():
         al = tk.Toplevel()
-        al.geometry("1000x450")
+        al.geometry(size)
         g1 = tk.Label(al, text="Algoritms", font=("Times New Roman", 20, "bold")).grid(row=1, column=1, padx=10, pady=15)
         y1 = "There are various algorithms with different approaches to schedule the process efficiently. We have\naccumulated few of the most common algorithms used which provide an overview of all the different\napproaches to CPU scheduling and also the most efficient.\nThe CPU scheduling algorithms implemented are:"
         y2 = "1. First Come First Served (FCFS)\n2. Shortest Job First (SJF) Non-preemptive\n3. Shortest Remaining Time First (SRTF) also called Preemptive SJF\n4. Priority Scheduling Preemptive approach\n5. Priority Queue Non-Preemptive approach\n6. Round Robin(RR) with Customizable Time Quantum\n7. Multi-Level Queue with Customizable Round-Robin Levels\n8. Multi-Level Feedback Queue with customizable Round-Robin levels and threshold\n9. A Default Algorithm is also provided which is used most commonly in the operating systems,\n    it is a specific type of Multi-Level Feedback Queue algorithm"
@@ -538,8 +538,8 @@ def goto_info():
     aim = "Our project is a GUI application based on Tkinter which provides a dynamic and interactive interface\nto compare and evaluate CPU scheduling algorithms."
     l = tk.Label(info, text="What is CPU Scheduling?", font=("Times New Roman", 16, "bold"))
     cpu = "CPU scheduling is a process which allows one process to use the CPU while the execution of another\nprocess is on hold(in waiting state) due to unavailability of CPU resources, which are currently preoccupied\nby another process. Thereby maximizing the CPU utilization. Thus the main goal of CPU scheduling as\nin its name, is to scheduletime and resource allocation of the CPU to the processes in the ready queue\nin an inefficient manner. Thus making the system much more efficient, fast and fair."
-    a1 = tk.Label(info, text=aim, justify="left", font=("roboto", 15, "normal"))
-    a2 = tk.Label(info, text=cpu, justify="left", font=("roboto", 15, "normal"))
+    a1 = tk.Label(info, text=aim, justify="left", font=("roboto", 13, "normal"))
+    a2 = tk.Label(info, text=cpu, justify="left", font=("roboto", 13, "normal"))
 
     r.grid(row=0, column=1, pady=20, columnspan=5)
     a.grid(row=1, column=1, pady=20, sticky=tk.W)
