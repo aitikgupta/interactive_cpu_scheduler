@@ -29,9 +29,6 @@ python3 gui.py
 3.   Average Turnaround Time
 4.   Throughput
 
-### The Complete Report of the Project:
-https://docs.google.com/document/d/1P5km7fbt3tNtEjNnvja51fBRehfunuNFNSkTw50nlZs/edit?usp=sharing
-
 ### Contributors:
 1.	 [Aadit Agarwal](https://github.com/aaditagarwal)
 2.	 [Aashish B Khatri](https://github.com/aashish-khatri)

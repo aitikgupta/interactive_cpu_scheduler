@@ -23,8 +23,6 @@ Use your command line to run the following commands.
 	pip install -r requirements.txt
 	python gui.py
 
-The complete report of the project:
-https://docs.google.com/document/d/1P5km7fbt3tNtEjNnvja51fBRehfunuNFNSkTw50nlZs/edit?usp=sharing
 
 Output Parameters:
 1.	Average Waiting Time
