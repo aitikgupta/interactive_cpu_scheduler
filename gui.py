@@ -116,6 +116,7 @@ def algo(window, algorithm, queue, extra):
             messagebox.showerror("Invalid time quantums found!", "Time Quantums should be in increasing order level-wise.")
             return
         processes = []
+        total_processes = []
         for prid in extra[1]:
             level_wise_processes = []
             try:
@@ -129,8 +130,23 @@ def algo(window, algorithm, queue, extra):
                     return
                 for proc in queue:
                     if proc[0] == j:
+                        for level in processes:
+                            if proc in level:
+                                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are repeated in different levels.")
+                                return
+                        for level_proc in level_wise_processes:
+                            if proc == level_proc:
+                                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are repeated in the same level.")
+                                return
                         level_wise_processes.append(proc)
+                        total_processes.append(proc)
             processes.append(level_wise_processes)
+        left_out_pid = []
+        for process in queue:
+            if process not in total_processes:
+                left_out_pid.append(process[0])
+        if len(left_out_pid) > 0:
+            messagebox.showinfo("Some processes left out!", f"These processes will not be considered as they were not an input ID to any level.\nProcess ID(s): {left_out_pid}")
         output = multi_level(multi_level_algorithms, processes)
     elif algorithm == "Multi Level Feedback Queue":
         threshold = extra[1].get()
