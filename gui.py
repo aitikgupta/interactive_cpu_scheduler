@@ -1,6 +1,3 @@
-import tkinter as tk
-import random
-from sample import sample_function
 from algorithms.fcfs import fcfs
 from algorithms.sjf_non_pre import sjf_non_pre
 from algorithms.sjf_pre import sjf_pre
@@ -10,8 +7,10 @@ from algorithms.priority_queue_pre import priority_queue_pre
 from algorithms.multi_level_feedback import multi_level_feedback
 from algorithms.default_algorithm import default_algorithm
 from algorithms.multi_level import multi_level
+import tkinter as tk
 from tkinter import messagebox
 import webbrowser
+import random
 
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
@@ -557,12 +556,12 @@ def goto_info():
     b4.grid(row=6, column=4, padx=20, pady=40, sticky=tk.NSEW)
 
 
-w = tk.Label(root, text = "Welcome to our project.\nChoose:", font=('Times New Roman', 20 ,'normal'))
+w = tk.Label(root, text = "Welcome to our Operating Systems project.\nChoose:", font=('Times New Roman', 20 ,'normal'))
 b1 = tk.Button(root, text="Random Queue Generation", height=3, command=goto_random_queue)
 b2 = tk.Button(root, text="User-Created Queue Generation", height=3, command=goto_user_queue)
 b3 = tk.Button(root, text="Quit", height=3, command=root.quit)
 b4 = tk.Button(root, text="Contact Us", height=3, command=goto_about)
-b5 = tk.Button(root, text="What Am I Looking At", height=3, command=goto_info)
+b5 = tk.Button(root, text="References", height=3, command=goto_info)
 w.grid(row=0, column=0, padx=400, pady=70, columnspan=3, sticky=tk.EW)
 b1.grid(row=1, column=0, sticky=tk.NSEW, padx=20, pady=10)
 b2.grid(row=1, column=1, sticky=tk.NSEW, padx=10, pady=10)
