@@ -110,13 +110,18 @@ def algo(window, algorithm, queue, extra):
     elif algorithm == "Multi Level Queue":
         pids = [inp[0] for inp in queue]
         multi_level_algorithms = [algori.get() for algori in extra[0]]
+        quantums = [al[-1] for al in multi_level_algorithms if al[0] == "R"]
+        quantums = list(map(int, quantums))
+        if quantums != sorted(quantums):
+            messagebox.showerror("Invalid time quantums found!", "Time Quantums should be in increasing order level-wise.")
+            return
         processes = []
         for prid in extra[1]:
             level_wise_processes = []
             try:
                 idx = [int(i) for i in prid.get().strip().split(",")]
             except:
-                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are blank.")
+                messagebox.showerror("Invalid Process ID(s) found!", "One or more process IDs are not integers.")
                 return
             for j in idx:
                 if j not in pids:
