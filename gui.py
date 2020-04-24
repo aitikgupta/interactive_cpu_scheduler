@@ -16,7 +16,7 @@ import webbrowser
 root = tk.Tk()
 root.title("Interactive CPU Scheduler")
 size = "1150x500"
-size_out = "800x400"
+size_out = "1000x400"
 root.geometry(size)
 
 def algo(window, algorithm, queue, extra):
@@ -476,13 +476,13 @@ def goto_info():
         t3 = "The minimum time required by the process for completion."
         t4 = "The time period allotted to each process in one instance in a Round-Robin Scheduling algorithm."
         t5 = "The maximum number of times a process can be executed in a high priority queue before its\n priority is decreased in a Multi-Level Feedback Queue."
-        l2 = tk.Label(sche, text=t1, justify="left", font=("arial", 11, "normal"))
-        l3 = tk.Label(sche, text=t2, justify="left", font=("arial", 11, "normal"))
-        l4 = tk.Label(sche, text=t3, justify="left", font=("arial", 11, "normal"))
-        l5 = tk.Label(sche, text=t4, justify="left", font=("arial", 11, "normal"))
-        l6 = tk.Label(sche, text=t5, justify="left", font=("arial", 11, "normal"))
+        l2 = tk.Label(sche, text=t1, justify="left", font=("roboto", 11, "normal"))
+        l3 = tk.Label(sche, text=t2, justify="left", font=("roboto", 11, "normal"))
+        l4 = tk.Label(sche, text=t3, justify="left", font=("roboto", 11, "normal"))
+        l5 = tk.Label(sche, text=t4, justify="left", font=("roboto", 11, "normal"))
+        l6 = tk.Label(sche, text=t5, justify="left", font=("roboto", 11, "normal"))
         l1.grid(row=1, column=1, padx=50, pady=30, columnspan=2)
-        tk.Label(sche, text=" ",).grid(row=0, column=0, padx=20)
+        tk.Label(sche, text=" ",).grid(row=0, column=0, padx=40)
         tk.Label(sche, text="Process Id:", font=("Times New Roman", 12, "bold")).grid(row=2, column=1, padx=5, sticky=tk.W)
         tk.Label(sche, text="Arrival Time:", font=("Times New Roman", 12, "bold")).grid(row=3, column=1, padx=5, sticky=tk.W)
         tk.Label(sche, text="Burst Time:", font=("Times New Roman", 12, "bold")).grid(row=4, column=1, padx=5, sticky=tk.W)
@@ -502,10 +502,10 @@ def goto_info():
          z3 = "The average of the amounts of time period taken to execute the process, i.e. the interval from\ntime of submission of the process into the ready queue to the time of completion of the\nprocess (Wall clock time)."
          z4 = "It is the total number of processes completed per unit time or rather say total amount of work \ndone in a unit of time."
 
-         m2 = tk.Label(para, text=z1, justify="left", font=("arial", 10, "normal"))
-         m3 = tk.Label(para, text=z2, justify="left", font=("arial", 10, "normal"))
-         m4 = tk.Label(para, text=z3, justify="left", font=("arial", 10, "normal"))
-         m5 = tk.Label(para, text=z4, justify="left", font=("arial", 10, "normal"))
+         m2 = tk.Label(para, text=z1, justify="left", font=("roboto", 11, "normal"))
+         m3 = tk.Label(para, text=z2, justify="left", font=("roboto", 11, "normal"))
+         m4 = tk.Label(para, text=z3, justify="left", font=("roboto", 11, "normal"))
+         m5 = tk.Label(para, text=z4, justify="left", font=("roboto", 11, "normal"))
 
          m1.grid(row=1, column=1, padx=50, pady=30, columnspan=2)
          tk.Label(para, text=" ", ).grid(row=0, column=0, padx=20)
@@ -521,14 +521,14 @@ def goto_info():
          m5.grid(row=5, column=2, pady=10, sticky=tk.W+tk.N)
     def algorithm_info():
         al = tk.Toplevel()
-        al.geometry(size_out)
+        al.geometry("1000x450")
         g1 = tk.Label(al, text="Algoritms", font=("Times New Roman", 20, "bold")).grid(row=1, column=1, padx=10, pady=15)
         y1 = "There are various algorithms with different approaches to schedule the process efficiently. We have\naccumulated few of the most common algorithms used which provide an overview of all the different\napproaches to CPU scheduling and also the most efficient.\nThe CPU scheduling algorithms implemented are:"
         y2 = "1. First Come First Served (FCFS)\n2. Shortest Job First (SJF) Non-preemptive\n3. Shortest Remaining Time First (SRTF) also called Preemptive SJF\n4. Priority Scheduling Preemptive approach\n5. Priority Queue Non-Preemptive approach\n6. Round Robin(RR) with Customizable Time Quantum\n7. Multi-Level Queue with Customizable Round-Robin Levels\n8. Multi-Level Feedback Queue with customizable Round-Robin levels and threshold\n9. A Default Algorithm is also provided which is used most commonly in the operating systems,\n    it is a specific type of Multi-Level Feedback Queue algorithm"
         y3 = "Non-preemptive algorithms are designed so that once a process enters the running state, it cannot be\npreempted until it completes, whereas the preemptive scheduling is based on priority where a scheduler may\npreempt a low priority running process anytime when a high priority process enters into a ready state."
-        g2 = tk.Label(al, text=y1, justify="left", font=("arial", 12, "normal")).grid(row=2,column=1, pady=8, padx=40, sticky=tk.W, columnspan=3)
-        g3 = tk.Label(al, text=y2, justify="left", font=("arial", 12, "normal")).grid(row=3, column=1, pady=8, padx=40, sticky=tk.W)
-        g4 = tk.Label(al, text=y3, justify="left", font=("arial", 12, "normal")).grid(row=4, column=1, pady=8, padx=40, sticky=tk.W, columnspan=3)
+        g2 = tk.Label(al, text=y1, justify="left", font=("roboto", 12, "normal")).grid(row=2,column=1, pady=8, padx=60, sticky=tk.W, columnspan=3)
+        g3 = tk.Label(al, text=y2, justify="left", font=("roboto", 12, "normal")).grid(row=3, column=1, pady=8, padx=60, sticky=tk.W)
+        g4 = tk.Label(al, text=y3, justify="left", font=("roboto", 12, "normal")).grid(row=4, column=1, pady=8, padx=60, sticky=tk.W, columnspan=3)
 
     info = tk.Toplevel()
     info.geometry(size)
@@ -538,8 +538,8 @@ def goto_info():
     aim = "Our project is a GUI application based on Tkinter which provides a dynamic and interactive interface\nto compare and evaluate CPU scheduling algorithms."
     l = tk.Label(info, text="What is CPU Scheduling?", font=("Times New Roman", 16, "bold"))
     cpu = "CPU scheduling is a process which allows one process to use the CPU while the execution of another\nprocess is on hold(in waiting state) due to unavailability of CPU resources, which are currently preoccupied\nby another process. Thereby maximizing the CPU utilization. Thus the main goal of CPU scheduling as\nin its name, is to scheduletime and resource allocation of the CPU to the processes in the ready queue\nin an inefficient manner. Thus making the system much more efficient, fast and fair."
-    a1 = tk.Label(info, text=aim, justify="left", font=("arial", 15, "normal"))
-    a2 = tk.Label(info, text=cpu, justify="left", font=("arial", 15, "normal"))
+    a1 = tk.Label(info, text=aim, justify="left", font=("roboto", 15, "normal"))
+    a2 = tk.Label(info, text=cpu, justify="left", font=("roboto", 15, "normal"))
 
     r.grid(row=0, column=1, pady=20, columnspan=5)
     a.grid(row=1, column=1, pady=20, sticky=tk.W)
@@ -557,13 +557,13 @@ def goto_info():
     b4.grid(row=6, column=4, padx=20, pady=40, sticky=tk.NSEW)
 
 
-w = tk.Label(root, text = "Welcome to our project.\nChoose:", font=('Times New Roman',22,'normal'))
+w = tk.Label(root, text = "Welcome to our project.\nChoose:", font=('Times New Roman', 20 ,'normal'))
 b1 = tk.Button(root, text="Random Queue Generation", height=3, command=goto_random_queue)
 b2 = tk.Button(root, text="User-Created Queue Generation", height=3, command=goto_user_queue)
 b3 = tk.Button(root, text="Quit", height=3, command=root.quit)
 b4 = tk.Button(root, text="Contact Us", height=3, command=goto_about)
 b5 = tk.Button(root, text="What Am I Looking At", height=3, command=goto_info)
-w.grid(row=0, column=0, padx=400, pady=70, columnspan=3)
+w.grid(row=0, column=0, padx=400, pady=70, columnspan=3, sticky=tk.EW)
 b1.grid(row=1, column=0, sticky=tk.NSEW, padx=20, pady=10)
 b2.grid(row=1, column=1, sticky=tk.NSEW, padx=10, pady=10)
 b3.grid(row=1, column=2, sticky=tk.NSEW, padx=20, pady=10)
