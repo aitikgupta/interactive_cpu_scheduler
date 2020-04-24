@@ -87,9 +87,9 @@ def algo(window, algorithm, queue, extra):
                 messagebox.showerror("Invalid priorities found!", "One or more priorities are blank.")
                 return
             priorities.append(value)
-        if sorted(priorities) != sorted(list(set(priorities))):
-            messagebox.showerror("Invalid priorities found!", "One or more priorities are not unique.")
-            return
+        # if sorted(priorities) != sorted(list(set(priorities))):
+        #     messagebox.showerror("Invalid priorities found!", "One or more priorities are not unique.")
+        #     return
         output = priority_non_pre(queue, priorities)
     elif algorithm == "Preemption Priority Queue":
         priorities = []
@@ -103,9 +103,9 @@ def algo(window, algorithm, queue, extra):
                 messagebox.showerror("Invalid priorities found!", "One or more priorities are blank.")
                 return
             priorities.append(value)
-        if sorted(priorities) != sorted(list(set(priorities))):
-            messagebox.showerror("Invalid priorities found!", "One or more priorities are not unique.")
-            return
+        # if sorted(priorities) != sorted(list(set(priorities))):
+        #     messagebox.showerror("Invalid priorities found!", "One or more priorities are not unique.")
+        #     return
         output = priority_queue_pre(queue, priorities)
     elif algorithm == "Multi Level Queue":
         pids = [inp[0] for inp in queue]
