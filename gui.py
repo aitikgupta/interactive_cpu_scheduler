@@ -434,9 +434,9 @@ def goto_about():
     email = tk.Label(about, text="Email", font=("Times New Roman", 15,"normal"))
     lbl0 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
     lbl1 = tk.Label(about, text=r"aashishkhatri809@gmail.com", fg="blue", cursor="hand2", anchor="e")
-    lbl2 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl2 = tk.Label(about, text=r"abhishekjindal0909@gmail.com", fg="blue", cursor="hand2", anchor="e")
     lbl3 = tk.Label(about, text=r"aitikgupta@gmail.com", fg="blue", cursor="hand2", anchor="e")
-    lbl4 = tk.Label(about, text=r"agarwal.aadit99@gmail.com", fg="blue", cursor="hand2", anchor="e")
+    lbl4 = tk.Label(about, text=r"himanshuruhela013@gmail.com", fg="blue", cursor="hand2", anchor="e")
     lbl5 = tk.Label(about, text=r"madhavik0512@gmail.com", fg="blue", cursor="hand2", anchor="e")
     
     lbl0.bind("<Button-1>", callback)
@@ -467,11 +467,11 @@ def goto_about():
     b1 = tk.Button(about, text="Go to Main", height=2, command=lambda:goto_main(about)).grid(row=8, column=2, pady=60)
 
 def goto_info():
-    info = Tk.Toplevel()
+    info = tk.Toplevel()
     info.geometry(size)
     root.withdraw()
 
-    b1 = tk.Button(about, text="Go to Main", height=2, command=lambda: goto_main(about)).grid(row=6, column=0,
+    b1 = tk.Button(info, text="Go to Main", height=2, command=lambda: goto_main(info)).grid(row=6, column=0,
                                                                                               columnspan=2)
 
 w = tk.Label(root, text = "Welcome to our project.\nChoose:", font=('Times New Roman',25,'normal'))
