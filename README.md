@@ -19,7 +19,6 @@ We recommend using Python 3.7.x for this application as Tkinter comes bundled wi
 ```
 git clone https://github.com/aitikgupta/interactive_cpu_scheduler.git
 cd interactive_cpu_scheduler
-pip install -r requirements.txt
 python3 gui.py
 ```
 

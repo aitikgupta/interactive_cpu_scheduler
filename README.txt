@@ -20,8 +20,7 @@ Use your command line to run the following commands.
 	
 	git clone https://github.com/aitikgupta/interactive_cpu_scheduler.git
 	cd interactive_cpu_scheduler
-	pip install -r requirements.txt
-	python gui.py
+	python3 gui.py
 
 
 Output Parameters:
