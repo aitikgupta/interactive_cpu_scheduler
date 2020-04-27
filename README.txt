@@ -22,6 +22,10 @@ Use your command line to run the following commands.
 	cd interactive_cpu_scheduler
 	python3 gui.py
 
+Note: If there's an 'ImportError: No module named tkinter':
+Enter the following command (Linux):
+
+	sudo apt-get install python3-tk
 
 Output Parameters:
 1.	Average Waiting Time
